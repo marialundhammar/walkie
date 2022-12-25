@@ -4,30 +4,36 @@
     "slug": "walkie",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
-    },
-    "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
+      "supportsTablet": true,
+      "bundleIdentifier": "com.maryh4ara.walkie",
+      "config": {
+        "googleMapsApiKey": "AIzaSyCSK6QOId2THG5jZY_UZlhRO4bGjY2YE5A"
       }
-    },
-    "web": {
-      "favicon": "./assets/favicon.png"
     }
-  }
+  },
+  "android": {
+    "adaptiveIcon": {
+      "foregroundImage": "./assets/adaptive-icon.png",
+      "backgroundColor": "#FFFFFF"
+    }
+  },
+  "web": {
+    "favicon": "./assets/favicon.png"
+  },
+  "extra": {
+    "eas": {
+      "projectId": "a6d6129c-5110-4fad-b3b5-58add546ef7a"
+    }
+  },
+  "owner": "maryh4ara"
 }
