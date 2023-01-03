@@ -1,13 +1,16 @@
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
-import { Animated, StyleSheet } from 'react-native';
-import React, { useState, useEffect, useRef } from 'react';
+import { StyleSheet } from 'react-native';
+import React, { useState, useEffect, FC } from 'react';
 import * as Location from 'expo-location';
 
-export default function Map() {
-  const [location, setLocation] = useState(null);
-  const [errorMsg, setErrorMsg] = useState(null);
-  let lat;
-  let long;
+interface Props {
+  locationType: any;
+  errorMsgType: string;
+}
+
+const Map: React.FC<Props> = ({ locationType, errorMsgType }) => {
+  const [location, setLocation] = useState(locationType);
+  const [errorMsg, setErrorMsg] = useState(errorMsgType);
 
   useEffect(() => {
     (async () => {
@@ -22,7 +25,10 @@ export default function Map() {
     })();
   }, []);
 
-  let text = 'Waiting..';
+  let text: string;
+  let lat: any;
+  let long: any;
+
   if (errorMsg) {
     text = errorMsg;
   } else if (location) {
@@ -73,7 +79,7 @@ export default function Map() {
       ></Marker>
     </MapView>
   );
-}
+};
 
 const styles = StyleSheet.create({
   map: {
@@ -304,3 +310,5 @@ const mapStyle = [
     ],
   },
 ];
+
+export default Map;
