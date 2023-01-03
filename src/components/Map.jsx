@@ -1,9 +1,37 @@
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
-import { StyleSheet, Text } from 'react-native';
-import React, { useState, useEffect } from 'react';
+import { Animated, StyleSheet } from 'react-native';
+import React, { useState, useEffect, useRef } from 'react';
 import * as Location from 'expo-location';
 
 export default function Map() {
+  const [location, setLocation] = useState(null);
+  const [errorMsg, setErrorMsg] = useState(null);
+  let lat;
+  let long;
+
+  useEffect(() => {
+    (async () => {
+      let { status } = await Location.requestForegroundPermissionsAsync();
+      if (status !== 'granted') {
+        setErrorMsg('Permission to access location was denied');
+        return;
+      }
+
+      let location = await Location.getCurrentPositionAsync({});
+      setLocation(location);
+    })();
+  }, []);
+
+  let text = 'Waiting..';
+  if (errorMsg) {
+    text = errorMsg;
+  } else if (location) {
+    lat = location.coords.latitude;
+    long = location.coords.longitude;
+    console.log(lat, long);
+    text = JSON.stringify(location);
+  }
+
   return (
     <MapView
       provider={PROVIDER_GOOGLE}
@@ -19,9 +47,29 @@ export default function Map() {
       <Marker
         style={{ width: 60, height: 40 }}
         coordinate={{
-          latitude: 55.59335153000684,
-          longitude: 13.016379698924244,
+          latitude: lat,
+          longitude: long,
         }}
+        pinColor="blue"
+        title="You are here"
+      ></Marker>
+
+      <Marker
+        style={{ width: 60, height: 40 }}
+        coordinate={{
+          latitude: 55.59374928440743,
+          longitude: 13.010533057676913,
+        }}
+        title="nr 1"
+      ></Marker>
+
+      <Marker
+        style={{ width: 60, height: 40 }}
+        coordinate={{
+          latitude: 55.59583469595808,
+          longitude: 13.01491042255252,
+        }}
+        title="nr 2"
       ></Marker>
     </MapView>
   );

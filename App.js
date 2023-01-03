@@ -1,51 +1,17 @@
-import { StyleSheet, View, Text, SafeAreaView } from 'react-native';
-import Map from './src/components/Map';
-import React, { useState, useEffect } from 'react';
-import * as Location from 'expo-location';
+import { StyleSheet, SafeAreaView, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import HomeView from './src/screens/HomeView';
+import MapView from './src/screens/MapView';
 
+const Stack = createNativeStackNavigator();
 export default function App() {
-  const [location, setLocation] = useState(null);
-  const [errorMsg, setErrorMsg] = useState(null);
-  let lat;
-  let long;
-
-  useEffect(() => {
-    (async () => {
-      let { status } = await Location.requestForegroundPermissionsAsync();
-      if (status !== 'granted') {
-        setErrorMsg('Permission to access location was denied');
-        return;
-      }
-
-      let location = await Location.getCurrentPositionAsync({});
-      setLocation(location);
-    })();
-  }, []);
-
-  let text = 'Waiting..';
-  if (errorMsg) {
-    text = errorMsg;
-  } else if (location) {
-    console.log(location.coords.latitude);
-    console.log(location.coords.longitude);
-
-    lat = location.coords.latitude;
-    long = location.coords.longitude;
-
-    text = JSON.stringify(location);
-  }
   return (
-    <SafeAreaView>
-      <Text>
-        {lat} {long}
-      </Text>
-      <Map />
-    </SafeAreaView>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="HomeView" component={HomeView} />
+        <Stack.Screen name="MapView" component={MapView} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
