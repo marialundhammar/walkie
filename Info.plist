@@ -30,5 +30,7 @@
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
 	<string>1:224761158428:ios:cc7347f885ba941cba78d9</string>
+	<key>NSMicrophoneUsageDescription</key>
+<string>Allow $(PRODUCT_NAME) to access your microphone</string>
 </dict>
 </plist>
