@@ -1,6 +1,7 @@
+import React from 'react';
 import { StyleSheet, SafeAreaView, Text, Pressable, Image } from 'react-native';
 
-export default function HomeView({ navigation }) {
+const HomeView = ({ navigation }) => {
   const title = `Let's start`;
 
   return (
@@ -14,7 +15,7 @@ export default function HomeView({ navigation }) {
       </Pressable>
     </SafeAreaView>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -44,3 +45,5 @@ const styles = StyleSheet.create({
     marginBottom: 32,
   },
 });
+
+export default HomeView;

@@ -1,16 +1,37 @@
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, TextInput } from 'react-native';
 import React, { useState, useEffect, FC } from 'react';
 import * as Location from 'expo-location';
+import { firebase } from '../firebase/config';
 
-interface Props {
-  locationType: any;
-  errorMsgType: string;
-}
+let text: string;
+let userLat: number;
+let userLong: number;
+let locationType: any = null;
+let errorMsgType: string;
+let distance: number;
+let distanceCalcType: number;
 
-const Map: React.FC<Props> = ({ locationType, errorMsgType }) => {
+const calculateDistance = (
+  lat1: number,
+  lon1: number,
+  lat2: number,
+  lon2: number
+) => {
+  var p = 0.017453292519943295;
+  var c = Math.cos;
+  var a =
+    0.5 -
+    c((lat2 - lat1) * p) / 2 +
+    (c(lat1 * p) * c(lat2 * p) * (1 - c((lon2 - lon1) * p))) / 2;
+
+  return 12742 * Math.asin(Math.sqrt(a));
+};
+
+const Map = () => {
   const [location, setLocation] = useState(locationType);
   const [errorMsg, setErrorMsg] = useState(errorMsgType);
+  const [distanceCalc, setDistanceCalc] = useState(distanceCalcType);
 
   useEffect(() => {
     (async () => {
@@ -25,18 +46,27 @@ const Map: React.FC<Props> = ({ locationType, errorMsgType }) => {
     })();
   }, []);
 
-  let text: string;
-  let lat: any;
-  let long: any;
-
-  if (errorMsg) {
-    text = errorMsg;
-  } else if (location) {
-    lat = location.coords.latitude;
-    long = location.coords.longitude;
-    console.log(lat, long);
+  if (location) {
+    userLat = location.coords.latitude;
+    userLong = location.coords.longitude;
+    console.log('location:', userLat, userLong);
     text = JSON.stringify(location);
   }
+
+  useEffect(() => {
+    distance = calculateDistance(
+      userLat,
+      userLong,
+      55.59374928440743,
+      13.010533057676913
+    );
+    console.log('fågelväg', distance);
+    if (distance < 0.2) {
+      console.log('miiiiindre');
+    } else {
+      console.log('bigger');
+    }
+  }, [userLat]);
 
   return (
     <MapView
@@ -44,8 +74,8 @@ const Map: React.FC<Props> = ({ locationType, errorMsgType }) => {
       style={styles.map}
       customMapStyle={mapStyle}
       initialRegion={{
-        latitude: 55.59335153000684,
-        longitude: 13.016379698924244,
+        latitude: 55.593749,
+        longitude: 13.010533,
         latitudeDelta: 0.04,
         longitudeDelta: 0.05,
       }}
@@ -53,8 +83,8 @@ const Map: React.FC<Props> = ({ locationType, errorMsgType }) => {
       <Marker
         style={{ width: 60, height: 40 }}
         coordinate={{
-          latitude: lat,
-          longitude: long,
+          latitude: userLat,
+          longitude: userLong,
         }}
         pinColor="blue"
         title="You are here"
