@@ -1,26 +1,18 @@
-import { StyleSheet, SafeAreaView, Text, Button } from 'react-native';
+import { StyleSheet, SafeAreaView, Text } from 'react-native';
 import Map from '../components/Map';
-import { Audio } from 'expo-av';
-import React, { Component } from 'react';
-import { useEffect, useState } from 'react';
+import AudioPlayer from '../components/AudioPlayer';
+import React from 'react';
+import { Provider } from 'react-redux';
+import store from '../../store';
 
-const HomeView = () => {
-  let sound = new Audio.Sound();
-
-  sound.loadAsync(require('../assets/sample-3s.mp3'));
-  console.log('loaded');
-
-  const playSound = async () => {
-    console.log('playing');
-    await sound.playAsync();
-    await sound.unloadAsync();
-  };
-
+const MapView = () => {
   return (
     <SafeAreaView style={styles.container}>
       <Text>MapView</Text>
-      <Button title="Play Sound" onPress={playSound} />
-      <Map />
+      <AudioPlayer />
+      <Provider store={store}>
+        <Map />
+      </Provider>
     </SafeAreaView>
   );
 };
@@ -31,4 +23,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default HomeView;
+export default MapView;

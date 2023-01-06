@@ -1,37 +1,13 @@
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
-import { StyleSheet, TextInput } from 'react-native';
-import React, { useState, useEffect, FC } from 'react';
+import { StyleSheet } from 'react-native';
+import React, { useState, useEffect, useContext } from 'react';
 import * as Location from 'expo-location';
-import { firebase } from '../firebase/config';
-
-let text: string;
-let userLat: number;
-let userLong: number;
-let locationType: any = null;
-let errorMsgType: string;
-let distance: number;
-let distanceCalcType: number;
-
-const calculateDistance = (
-  lat1: number,
-  lon1: number,
-  lat2: number,
-  lon2: number
-) => {
-  var p = 0.017453292519943295;
-  var c = Math.cos;
-  var a =
-    0.5 -
-    c((lat2 - lat1) * p) / 2 +
-    (c(lat1 * p) * c(lat2 * p) * (1 - c((lon2 - lon1) * p))) / 2;
-
-  return 12742 * Math.asin(Math.sqrt(a));
-};
+import { UserLocationContext } from '../context/userLocationContext';
 
 const Map = () => {
-  const [location, setLocation] = useState(locationType);
-  const [errorMsg, setErrorMsg] = useState(errorMsgType);
-  const [distanceCalc, setDistanceCalc] = useState(distanceCalcType);
+  let location: any;
+  const [errorMsg, setErrorMsg] = useState<string>('');
+  const { updateUserLocation, userLocation } = useContext(UserLocationContext);
 
   useEffect(() => {
     (async () => {
@@ -40,33 +16,15 @@ const Map = () => {
         setErrorMsg('Permission to access location was denied');
         return;
       }
+      location = await Location.getCurrentPositionAsync({});
 
-      let location = await Location.getCurrentPositionAsync({});
-      setLocation(location);
+      updateUserLocation({
+        lat: location.coords.latitude,
+        long: location.coords.longitude,
+      });
+      console.log('userlocation', userLocation.lat, userLocation.long);
     })();
   }, []);
-
-  if (location) {
-    userLat = location.coords.latitude;
-    userLong = location.coords.longitude;
-    console.log('location:', userLat, userLong);
-    text = JSON.stringify(location);
-  }
-
-  useEffect(() => {
-    distance = calculateDistance(
-      userLat,
-      userLong,
-      55.59374928440743,
-      13.010533057676913
-    );
-    console.log('fågelväg', distance);
-    if (distance < 0.2) {
-      console.log('miiiiindre');
-    } else {
-      console.log('bigger');
-    }
-  }, [userLat]);
 
   return (
     <MapView
@@ -74,7 +32,7 @@ const Map = () => {
       style={styles.map}
       customMapStyle={mapStyle}
       initialRegion={{
-        latitude: 55.593749,
+        latitude: 55.59374928440743,
         longitude: 13.010533,
         latitudeDelta: 0.04,
         longitudeDelta: 0.05,
@@ -83,8 +41,8 @@ const Map = () => {
       <Marker
         style={{ width: 60, height: 40 }}
         coordinate={{
-          latitude: userLat,
-          longitude: userLong,
+          latitude: userLocation.lat,
+          longitude: userLocation.long,
         }}
         pinColor="blue"
         title="You are here"

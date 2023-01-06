@@ -1,7 +1,16 @@
-import React from 'react';
-import { StyleSheet, SafeAreaView, Text, Pressable, Image } from 'react-native';
+import {
+  StyleSheet,
+  SafeAreaView,
+  Text,
+  Pressable,
+  Image,
+  Button,
+} from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { Audio } from 'expo-av';
+import { AudioPlayer } from 'react-native-simple-audio-player';
 
-const HomeView = ({ navigation }) => {
+export default function HomeView({ navigation }) {
   const title = `Let's start`;
 
   return (
@@ -15,7 +24,7 @@ const HomeView = ({ navigation }) => {
       </Pressable>
     </SafeAreaView>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -45,5 +54,3 @@ const styles = StyleSheet.create({
     marginBottom: 32,
   },
 });
-
-export default HomeView;

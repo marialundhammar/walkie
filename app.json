@@ -18,8 +18,7 @@
       "bundleIdentifier": "com.maryh4ara.walkie",
       "config": {
         "googleMapsApiKey": "AIzaSyCSK6QOId2THG5jZY_UZlhRO4bGjY2YE5A"
-      },
-      "UIBackgroundModes": ["audio"]
+      }
     }
   },
   "android": {
