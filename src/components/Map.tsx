@@ -1,13 +1,14 @@
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
-import { StyleSheet } from 'react-native';
+import { Button, StyleSheet } from 'react-native';
 import React, { useState, useEffect, useContext } from 'react';
 import * as Location from 'expo-location';
 import { UserLocationContext } from '../context/userLocationContext';
 
 const Map = () => {
-  let location: any;
+  const [location, setLocation] = useState<any>();
   const [errorMsg, setErrorMsg] = useState<string>('');
-  const { updateUserLocation, userLocation } = useContext(UserLocationContext);
+  const { updateUserLocation, userLocation, nextMarkerLat, nextMarkerLong } =
+    useContext(UserLocationContext);
 
   useEffect(() => {
     (async () => {
@@ -16,56 +17,47 @@ const Map = () => {
         setErrorMsg('Permission to access location was denied');
         return;
       }
-      location = await Location.getCurrentPositionAsync({});
+      const getLocation = await Location.getCurrentPositionAsync({});
 
-      updateUserLocation({
-        lat: location.coords.latitude,
-        long: location.coords.longitude,
-      });
-      console.log('userlocation', userLocation.lat, userLocation.long);
+      await setLocation(getLocation);
+
+      updateUserLocation(location.coords.latitude, location.coords.longitude);
     })();
-  }, []);
+  }, [location]);
 
   return (
-    <MapView
-      provider={PROVIDER_GOOGLE}
-      style={styles.map}
-      customMapStyle={mapStyle}
-      initialRegion={{
-        latitude: 55.59374928440743,
-        longitude: 13.010533,
-        latitudeDelta: 0.04,
-        longitudeDelta: 0.05,
-      }}
-    >
-      <Marker
-        style={{ width: 60, height: 40 }}
-        coordinate={{
-          latitude: userLocation.lat,
-          longitude: userLocation.long,
+    <>
+      <MapView
+        provider={PROVIDER_GOOGLE}
+        style={styles.map}
+        customMapStyle={mapStyle}
+        initialRegion={{
+          latitude: nextMarkerLat,
+          longitude: nextMarkerLong,
+          latitudeDelta: 0.04,
+          longitudeDelta: 0.05,
         }}
-        pinColor="blue"
-        title="You are here"
-      ></Marker>
+      >
+        <Marker
+          style={{ width: 60, height: 40 }}
+          coordinate={{
+            latitude: userLocation.lat,
+            longitude: userLocation.long,
+          }}
+          pinColor="blue"
+          title="You are here"
+        ></Marker>
 
-      <Marker
-        style={{ width: 60, height: 40 }}
-        coordinate={{
-          latitude: 55.59374928440743,
-          longitude: 13.010533057676913,
-        }}
-        title="nr 1"
-      ></Marker>
-
-      <Marker
-        style={{ width: 60, height: 40 }}
-        coordinate={{
-          latitude: 55.59583469595808,
-          longitude: 13.01491042255252,
-        }}
-        title="nr 2"
-      ></Marker>
-    </MapView>
+        <Marker
+          style={{ width: 60, height: 40 }}
+          coordinate={{
+            latitude: nextMarkerLat,
+            longitude: nextMarkerLong,
+          }}
+          title="nr 1"
+        ></Marker>
+      </MapView>
+    </>
   );
 };
 

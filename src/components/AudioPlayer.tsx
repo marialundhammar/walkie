@@ -3,74 +3,66 @@ import React, { FC, useContext, useEffect, useState } from 'react';
 import { Button } from 'react-native';
 import { UserLocationContext } from '../context/userLocationContext';
 
-let distance: number;
+let nextTrack: number = 1;
 
-const calculateDistance = (
-  lat1: number,
-  lon1: number,
-  lat2: number,
-  lon2: number
-) => {
-  var p = 0.017453292519943295;
-  var c = Math.cos;
-  var a =
-    0.5 -
-    c((lat2 - lat1) * p) / 2 +
-    (c(lat1 * p) * c(lat2 * p) * (1 - c((lon2 - lon1) * p))) / 2;
-
-  return 12742 * Math.asin(Math.sqrt(a));
-};
-
+function delay(time) {
+  return new Promise((resolve) => setTimeout(resolve, time));
+}
 const AudioPlayer: FC = () => {
   const player = new Audio.Sound();
-  const [showAudioPlayer, setShowAudioPlayer] = useState<boolean>(false);
-  const [text, onChangeText] = useState<string>('Useless Text');
 
-  const { userLocation } = useContext(UserLocationContext);
+  const { userLocation, showAudioPlayer, updateUserLocationOnce } =
+    useContext(UserLocationContext);
 
-  useEffect(() => {
-    distance = calculateDistance(
-      userLocation.lat,
-      userLocation.long,
-      55.59336365493582,
-      13.016401156813284
-    );
+  async function playSoundAsync() {
+    console.log('nextTrack before', nextTrack);
 
-    console.log('fågelväg', distance);
-    if (distance < 0.2) {
-      console.log('miiiiindre');
-      setShowAudioPlayer(true);
-      console.log(showAudioPlayer);
-    } else {
-      console.log('bigger');
-      setShowAudioPlayer(false);
+    if (nextTrack === 1) {
+      try {
+        await player.loadAsync(require('./sample.mp3'), {
+          shouldPlay: true,
+        });
+        await player.setPositionAsync(0);
+        await player.playAsync();
+        await delay(4000);
+        //await updateUserLocationOnce(55.59338, 13.01635, 55.59238, 13.01091);
+      } catch (error) {
+        // An error occurred!
+        console.log(error);
+      }
     }
-  }, [userLocation]);
-
-  async function onPlay() {
-    try {
-      await player.loadAsync(require('../assets/sample.mp3'), {
-        shouldPlay: false,
-      });
-      await player.setPositionAsync(0);
-      await player.playAsync();
-      console.log(' Your sound is playing!', userLocation);
-    } catch (error) {
-      // An error occurred!
-      console.log(error);
+    if (nextTrack === 2) {
+      unloadSound();
+      try {
+        await player.loadAsync(require('./file_example.mp3'), {
+          shouldPlay: true,
+        });
+        await player.setPositionAsync(0);
+        await player.playAsync();
+        await delay(4000);
+        //await updateUserLocationOnce(55.59187, 13.01528, 55.59145, 13.01266);
+      } catch (error) {
+        // An error occurred!
+        console.log(error);
+      }
     }
+    if (nextTrack === 3) {
+      console.log('finished');
+      nextTrack = 0;
+    }
+
+    nextTrack++;
+    console.log('next track is', nextTrack);
   }
 
-  async function unloadSound() {
-    await player.stopAsync();
+  const unloadSound = async () => {
     await player.unloadAsync();
-  }
+  };
 
   return (
     showAudioPlayer && (
       <>
-        <Button title="Play Sound" onPress={onPlay} />
-        <Button title="unload Sound" onPress={unloadSound} />
+        <Button title="Play Sound" onPress={playSoundAsync} />
       </>
     )
   );

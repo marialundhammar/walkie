@@ -1,1 +1,5 @@
-export type MyStackParamList = { HomeView: undefined; MapView: undefined };
+export type MyStackParamList = {
+  HomeView: undefined;
+  MapView: undefined;
+  StoriesView: undefined;
+};

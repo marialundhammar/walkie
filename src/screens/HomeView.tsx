@@ -1,24 +1,17 @@
-import {
-  StyleSheet,
-  SafeAreaView,
-  Text,
-  Pressable,
-  Image,
-  Button,
-} from 'react-native';
-import React, { useEffect, useState } from 'react';
-import { Audio } from 'expo-av';
-import { AudioPlayer } from 'react-native-simple-audio-player';
+import { StyleSheet, SafeAreaView, Text, Pressable, Image } from 'react-native';
 
 export default function HomeView({ navigation }) {
   const title = `Let's start`;
 
+  console.log('helloooo');
+
   return (
     <SafeAreaView style={styles.container}>
       <Image style={styles.image} source={require('../assets/loga.png')} />
+
       <Pressable
         style={styles.button}
-        onPress={() => navigation.navigate('MapView')}
+        onPress={() => navigation.navigate('StoriesView')}
       >
         <Text style={styles.text}>{title}</Text>
       </Pressable>
