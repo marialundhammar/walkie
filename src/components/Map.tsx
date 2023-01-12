@@ -5,7 +5,7 @@ import * as Location from 'expo-location';
 import { UserLocationContext } from '../context/userLocationContext';
 
 const Map = () => {
-  const [location, setLocation] = useState<any>();
+  let location: any;
   const [errorMsg, setErrorMsg] = useState<string>('');
   const { updateUserLocation, userLocation, nextMarkerLat, nextMarkerLong } =
     useContext(UserLocationContext);
@@ -17,9 +17,8 @@ const Map = () => {
         setErrorMsg('Permission to access location was denied');
         return;
       }
-      const getLocation = await Location.getCurrentPositionAsync({});
 
-      await setLocation(getLocation);
+      location = await Location.getCurrentPositionAsync({});
 
       updateUserLocation(location.coords.latitude, location.coords.longitude);
     })();
@@ -65,6 +64,8 @@ const styles = StyleSheet.create({
   map: {
     width: '100%',
     height: '100%',
+    zIndex: -1,
+    flex: 1,
   },
 });
 
