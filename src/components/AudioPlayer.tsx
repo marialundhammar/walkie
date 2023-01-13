@@ -1,5 +1,5 @@
 import { Audio } from 'expo-av';
-import React, { FC, useCallback, useContext, useEffect, useState } from 'react';
+import React, { FC, useContext, useState } from 'react';
 import { View, StyleSheet, Pressable, Text, Dimensions } from 'react-native';
 import { UserLocationContext } from '../context/userLocationContext';
 import ProgressBar from './Progressbar';
@@ -15,17 +15,11 @@ function delay(time) {
 const { width } = Dimensions.get('screen');
 
 const AudioPlayer: FC = () => {
-  const {
-    userLocation,
-    showAudioPlayer,
-    setShowAudioPlayer,
-    updateUserLocationOnce,
-    updateMarker,
-  } = useContext(UserLocationContext);
+  const { showAudioPlayer } = useContext(UserLocationContext);
 
   const [status, setStatus] = useState<boolean>(false);
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
-  const [duration, setDuration] = useState<number>(5000);
+  const [duration, setDuration] = useState<number>(0);
 
   const player = new Audio.Sound();
 
@@ -38,7 +32,7 @@ const AudioPlayer: FC = () => {
     if (nextTrack === 1) {
       try {
         const { status } = await Audio.Sound.createAsync(
-          require('./file_example.mp3')
+          require('../assets/file_example.mp3')
         );
 
         console.log('before is laoding', status);
@@ -47,12 +41,12 @@ const AudioPlayer: FC = () => {
           statusDuration = status.durationMillis;
           positionDuration = status.positionMillis;
 
-          setDuration(5000);
+          setDuration(statusDuration);
         } else {
           console.error('track not loaded');
         }
 
-        await player.loadAsync(require('./sample.mp3'), {
+        await player.loadAsync(require('../assets/file_example.mp3'), {
           shouldPlay: true,
         });
 
@@ -65,7 +59,7 @@ const AudioPlayer: FC = () => {
 
     if (nextTrack === 2) {
       try {
-        await player.loadAsync(require('./sample.mp3'), {
+        await player.loadAsync(require('../assets/sample.mp3'), {
           shouldPlay: true,
         });
         await player.setPositionAsync(0);
@@ -114,7 +108,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     backgroundColor: '#83F8A4',
-    height: 200,
+    height: 100,
     zIndex: 100,
     marginBottom: 20,
   },

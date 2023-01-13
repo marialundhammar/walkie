@@ -3,13 +3,14 @@ import { Animated, View, StyleSheet } from 'react-native';
 
 const ProgressBar = (duration) => {
   console.log('this is duration', duration);
-  const barWidth = useRef(new Animated.Value(0)).current;
+  const barWidth = new Animated.Value(0);
+
+  console.log('progressbar', duration.duration);
 
   useEffect(() => {
     Animated.timing(barWidth, {
-      toValue: 100,
-      //duration here
-      duration: 5000,
+      toValue: 240,
+      duration: duration.duration,
       useNativeDriver: false,
     }).start();
   });
@@ -26,12 +27,14 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     paddingHorizontal: 30,
+    width: 300,
   },
 
   progressBar: {
-    height: 30,
-    backgroundColor: 'purple',
-    borderRadius: 10,
+    height: 10,
+    backgroundColor: 'black',
+    borderRadius: 5,
+    width: 200,
   },
 });
 

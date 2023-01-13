@@ -40,13 +40,11 @@ const MapView = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text>MapView</Text>
-      <AudioPlayer />
-
       <Button title="Fake UserLocation1" onPress={fakeUserLocation1} />
       <Button title="Fake UserLocation2" onPress={fakeUserLocation2} />
 
       <Map />
+      <AudioPlayer />
     </SafeAreaView>
   );
 };
