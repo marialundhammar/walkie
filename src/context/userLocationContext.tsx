@@ -5,15 +5,15 @@ export const UserLocationContext = createContext<{
   userLocation: { lat: number; long: number };
   nextMarkerLat: number;
   nextMarkerLong: number;
+  nextMarkerTitle: string;
   distance: number;
   showAudioPlayer: boolean;
   setShowAudioPlayer: (boolean) => void;
-  updateMarker: (lat: number, long: number) => void;
+  updateMarker: (lat: number, long: number, title: string) => void;
 }>(null);
 
 let userLocationArrayLat: number[];
 let userLocationArrayLong: number[];
-let nextTrack: number = 1;
 let distance: number;
 
 const calculateDistance = (
@@ -45,8 +45,11 @@ const UserLocationProvider = ({ children }) => {
     return new Promise((resolve) => setTimeout(resolve, time));
   }
 
-  const [nextMarkerLat, setNextMarkerLat] = useState<number>(55.5942);
-  const [nextMarkerLong, setNextMarkerLong] = useState<number>(13.01213);
+  const [nextMarkerLat, setNextMarkerLat] = useState<number>(55.59237421838877);
+  const [nextMarkerLong, setNextMarkerLong] =
+    useState<number>(13.015350019480769);
+  const [nextMarkerTitle, setNextMarkerTitle] =
+    useState<string>('Start Position');
   userLocationArrayLat = [55.59338, 55.59265, 55.5942];
   userLocationArrayLong = [13.01635, 13.01743, 13.01213];
 
@@ -67,7 +70,7 @@ const UserLocationProvider = ({ children }) => {
   );
 
   useEffect(() => {
-    if (distance < 0.15) {
+    if (distance < 0.05) {
       setShowAudioPlayer(true);
     } else {
       console.log('bigger');
@@ -75,9 +78,10 @@ const UserLocationProvider = ({ children }) => {
     }
   }, [distance]);
 
-  const updateMarker = async (lat: number, long: number) => {
+  const updateMarker = async (lat: number, long: number, title: string) => {
     setNextMarkerLat(lat);
     setNextMarkerLong(long);
+    setNextMarkerTitle(title);
   };
 
   return (
@@ -87,6 +91,7 @@ const UserLocationProvider = ({ children }) => {
         userLocation,
         nextMarkerLat,
         nextMarkerLong,
+        nextMarkerTitle,
         distance,
         showAudioPlayer,
         setShowAudioPlayer,

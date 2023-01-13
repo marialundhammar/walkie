@@ -41,7 +41,7 @@ const AudioPlayer: FC = () => {
           console.error('track not loaded');
         }
 
-        await player.loadAsync(require('./sample.mp3'), {
+        await player.loadAsync(require('../assets/sample.mp3'), {
           shouldPlay: true,
         });
 
@@ -88,7 +88,11 @@ const AudioPlayer: FC = () => {
     setIsPlaying(false);
     await player.unloadAsync();
     setShowAudioPlayer(false);
-    updateMarker(nextMarkerArrayLat[i], nextMarkerArrayLong[i]);
+    updateMarker(
+      nextMarkerArrayLat[i],
+      nextMarkerArrayLong[i],
+      `Track ${nextTrack}`
+    );
     i++;
   };
 

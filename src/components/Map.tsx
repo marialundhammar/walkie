@@ -6,9 +6,27 @@ import { UserLocationContext } from '../context/userLocationContext';
 
 const Map = () => {
   let location: any;
+  let i: number = 0;
   const [errorMsg, setErrorMsg] = useState<string>('');
-  const { updateUserLocation, userLocation, nextMarkerLat, nextMarkerLong } =
-    useContext(UserLocationContext);
+  const [updateUserLocationDelay, setUpdateUserLocationDelay] = useState<any>();
+  const {
+    updateUserLocation,
+    userLocation,
+    nextMarkerLat,
+    nextMarkerLong,
+    nextMarkerTitle,
+  } = useContext(UserLocationContext);
+
+  function delay(time) {
+    return new Promise((resolve) => setTimeout(resolve, time));
+  }
+
+  const delayOfUserPosition = async () => {
+    await delay(1000);
+    console.log('delay delay');
+    setUpdateUserLocationDelay(i);
+    i++;
+  };
 
   useEffect(() => {
     (async () => {
@@ -21,12 +39,14 @@ const Map = () => {
       location = await Location.getCurrentPositionAsync({});
 
       updateUserLocation(location.coords.latitude, location.coords.longitude);
+      console.log('userUpdate', userLocation.lat, userLocation.long);
+      delayOfUserPosition();
     })();
-  }, [location]);
+  }, [updateUserLocation]);
 
   return (
     <>
-      <MapView
+      <MapView.Animated
         provider={PROVIDER_GOOGLE}
         style={styles.map}
         customMapStyle={mapStyle}
@@ -36,8 +56,10 @@ const Map = () => {
           latitudeDelta: 0.04,
           longitudeDelta: 0.05,
         }}
+        showsUserLocation={true}
+        showsCompass={true}
       >
-        <Marker
+        {/*      <Marker
           style={{ width: 60, height: 40 }}
           coordinate={{
             latitude: userLocation.lat,
@@ -46,16 +68,16 @@ const Map = () => {
           pinColor="blue"
           title="You are here"
         ></Marker>
-
+ */}
         <Marker
           style={{ width: 60, height: 40 }}
           coordinate={{
             latitude: nextMarkerLat,
             longitude: nextMarkerLong,
           }}
-          title="nr 1"
+          title={nextMarkerTitle}
         ></Marker>
-      </MapView>
+      </MapView.Animated>
     </>
   );
 };
