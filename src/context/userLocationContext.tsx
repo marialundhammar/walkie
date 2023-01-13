@@ -7,7 +7,6 @@ export const UserLocationContext = createContext<{
   nextMarkerLong: number;
   distance: number;
   showAudioPlayer: boolean;
-  updateUserLocationOnce: any;
   setShowAudioPlayer: (boolean) => void;
   updateMarker: (lat: number, long: number) => void;
 }>(null);
@@ -52,34 +51,12 @@ const UserLocationProvider = ({ children }) => {
   userLocationArrayLong = [13.01635, 13.01743, 13.01213];
 
   const updateUserLocation = async (lat: any, long: any) => {
-    /*     for (let i = 0; i < userLocationArrayLat.length; i++) {
-      await delay(2000); */
-    /*       setUserLocation({
-        lat: lat,
-        long: long,
-      });
-    } */
     setUserLocation({
       lat: lat,
       long: long,
     });
 
     console.log(userLocation);
-  };
-
-  const updateUserLocationOnce = async (
-    lat: number,
-    long: number,
-    markerLat: number,
-    markerLong: number
-  ) => {
-    setUserLocation({
-      lat: userLocation.lat,
-      long: userLocation.long,
-    });
-
-    setNextMarkerLat(markerLat);
-    setNextMarkerLong(markerLong);
   };
 
   distance = calculateDistance(
@@ -112,7 +89,6 @@ const UserLocationProvider = ({ children }) => {
         nextMarkerLong,
         distance,
         showAudioPlayer,
-        updateUserLocationOnce,
         setShowAudioPlayer,
         updateMarker,
       }}

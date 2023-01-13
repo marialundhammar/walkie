@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { Animated, View, StyleSheet } from 'react-native';
+import { Animated, View, StyleSheet, Text } from 'react-native';
 
 const ProgressBar = (duration) => {
   console.log('this is duration', duration);
@@ -15,8 +15,16 @@ const ProgressBar = (duration) => {
     }).start();
   });
 
+  const getDuration = (duration) => {
+    let time: number = duration / 1000;
+    console.log(time);
+  };
+
+  getDuration(duration.duration);
+
   return (
     <View style={styles.barContainer}>
+      <Text>{duration.duration}</Text>
       <Animated.View style={[styles.progressBar, { width: barWidth }]} />
     </View>
   );
@@ -32,7 +40,7 @@ const styles = StyleSheet.create({
 
   progressBar: {
     height: 10,
-    backgroundColor: 'black',
+    backgroundColor: '#83F8A4',
     borderRadius: 5,
     width: 200,
   },

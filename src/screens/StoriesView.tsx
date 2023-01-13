@@ -16,18 +16,26 @@ const StoriesView = ({ navigation }) => {
         colors={['rgba(138,165,178,0.8)', 'transparent']}
         style={styles.container}
       >
-        <Text style={styles.h2}>Mysteriet på Värnhem</Text>
+        <Text style={styles.h2}>
+          Mysteriet i Terrariet, Folkets Park, Malmö
+        </Text>
         <Image
           style={styles.image}
           source={require('../assets/banner-story.jpg')}
         />
         <View style={styles.content}>
-          <Text style={styles.text}>5 km 1,5 timme</Text>
+          <Text style={styles.text}>2 km, 40 minuter</Text>
           <Text style={styles.bodyText}>
-            Fusce id convallis libero, id viverra ligula. Mauris sit amet
-            viverra mi. Donec egestas leo ante, quis sodales eros gravida
-            veloecenas quis velit non urna ornare interdum. Nunc a metus tempor
-            sem blandit faucib
+            Mordet i terrariet är en historia i fem delar som utspelar i
+            Folketspark. Du kommer få följa med på en ca 2 kilometer lång
+            vandring genom konstiga sammanträffanden och hemligheter. Se till
+            att din mobil är fulladdad och att du har med dig bra hörlurar. Ta
+            dig till startplatsen och följ sedan instruktionerna i mobilen och i
+            hörlurarna.
+          </Text>
+          <Text style={styles.bodyText}>
+            Ta dig till startplatsen och följ sedan instruktionerna i mobilen
+            och i hörlurarna.
           </Text>
         </View>
 
@@ -74,7 +82,7 @@ const styles = StyleSheet.create({
   buttonContainer: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'flex-start',
+    justifyContent: 'flex-end',
   },
 
   textButton: {
@@ -89,6 +97,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
     letterSpacing: 0.25,
     margin: 16,
+    marginTop: 8,
   },
 
   button: {
@@ -96,7 +105,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 32,
     paddingVertical: 12,
     borderRadius: 8,
-    marginTop: 32,
+    marginBottom: 2,
   },
 
   image: {
@@ -105,6 +114,7 @@ const styles = StyleSheet.create({
     height: 200,
     alignItems: 'center',
     justifyContent: 'center',
+    borderRadius: 8,
   },
 });
 

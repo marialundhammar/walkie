@@ -24,24 +24,15 @@ const MapView = () => {
     updateUserLocation(55.59338, 13.01635);
   };
 
-  /*   <TextInput
-  style={styles.input}
-  onChangeText={onChangelat}
-  value={lat}
-  keyboardType="numeric"
-/>
-<TextInput
-  style={styles.input}
-  onChangeText={onChangelong}
-  value={long}
-  keyboardType="numeric"
-/>
- */
+  const fakeUserLocation3 = () => {
+    updateUserLocation(55.594084960120625, 13.013083680733859);
+  };
 
   return (
     <SafeAreaView style={styles.container}>
       <Button title="Fake UserLocation1" onPress={fakeUserLocation1} />
       <Button title="Fake UserLocation2" onPress={fakeUserLocation2} />
+      <Button title="Fake UserLocation3" onPress={fakeUserLocation3} />
 
       <Map />
       <AudioPlayer />
