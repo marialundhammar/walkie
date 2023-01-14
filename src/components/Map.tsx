@@ -42,7 +42,7 @@ const Map = () => {
       console.log('userUpdate', userLocation.lat, userLocation.long);
       delayOfUserPosition();
     })();
-  }, [updateUserLocation]);
+  }, []);
 
   return (
     <>

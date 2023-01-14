@@ -8,8 +8,10 @@ export const UserLocationContext = createContext<{
   nextMarkerTitle: string;
   distance: number;
   showAudioPlayer: boolean;
+  showModal: boolean;
   setShowAudioPlayer: (boolean) => void;
   updateMarker: (lat: number, long: number, title: string) => void;
+  setShowModal: (boolean) => void;
 }>(null);
 
 let userLocationArrayLat: number[];
@@ -29,7 +31,6 @@ const calculateDistance = (
     c((lat2 - lat1) * p) / 2 +
     (c(lat1 * p) * c(lat2 * p) * (1 - c((lon2 - lon1) * p))) / 2;
 
-  console.log(12742 * Math.asin(Math.sqrt(a)));
   return 12742 * Math.asin(Math.sqrt(a));
 };
 
@@ -40,6 +41,7 @@ const UserLocationProvider = ({ children }) => {
   });
 
   const [showAudioPlayer, setShowAudioPlayer] = useState<boolean>(false);
+  const [showModal, setShowModal] = useState<boolean>(false);
 
   function delay(time) {
     return new Promise((resolve) => setTimeout(resolve, time));
@@ -96,6 +98,8 @@ const UserLocationProvider = ({ children }) => {
         showAudioPlayer,
         setShowAudioPlayer,
         updateMarker,
+        setShowModal,
+        showModal,
       }}
     >
       {children}

@@ -1,20 +1,13 @@
-import {
-  StyleSheet,
-  SafeAreaView,
-  Text,
-  TextInput,
-  Button,
-} from 'react-native';
+import { StyleSheet, SafeAreaView, Button } from 'react-native';
 import Map from '../components/Map';
 import AudioPlayer from '../components/AudioPlayer';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { UserLocationContext } from '../context/userLocationContext';
+import ModalComponent from '../components/Modal';
 
 const MapView = () => {
-  const [lat, onChangelat] = useState(null);
-  const [long, onChangelong] = useState(null);
-
-  const { updateUserLocation, userLocation } = useContext(UserLocationContext);
+  const { updateUserLocation, setShowModal, showModal } =
+    useContext(UserLocationContext);
 
   const fakeUserLocation1 = () => {
     updateUserLocation(55.5942, 13.013);
@@ -28,8 +21,13 @@ const MapView = () => {
     updateUserLocation(55.594084960120625, 13.013083680733859);
   };
 
+  useEffect(() => {
+    setShowModal(true);
+  }, []);
+
   return (
     <SafeAreaView style={styles.container}>
+      <ModalComponent />
       <Button title="Fake UserLocation1" onPress={fakeUserLocation1} />
       <Button title="Fake UserLocation2" onPress={fakeUserLocation2} />
       <Button title="Fake UserLocation3" onPress={fakeUserLocation3} />
@@ -62,3 +60,6 @@ const styles = StyleSheet.create({
 });
 
 export default MapView;
+function setShowModal(arg0: boolean) {
+  throw new Error('Function not implemented.');
+}
