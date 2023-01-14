@@ -75,9 +75,9 @@ const UserLocationProvider = ({ children }) => {
     if (distance < 0.05) {
       setShowAudioPlayer(true);
     } else {
-      console.log('bigger');
       setShowAudioPlayer(false);
     }
+    console.log(distance);
   }, [distance]);
 
   const updateMarker = async (lat: number, long: number, title: string) => {

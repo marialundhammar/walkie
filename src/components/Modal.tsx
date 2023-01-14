@@ -1,9 +1,26 @@
 import React, { useContext } from 'react';
 import { Alert, Modal, Text, View, Pressable, StyleSheet } from 'react-native';
 import { UserLocationContext } from '../context/userLocationContext';
+import { Audio } from 'expo-av';
 
 const ModalComponent = () => {
   const { showModal, setShowModal, distance } = useContext(UserLocationContext);
+
+  const closeModalEvents = async () => {
+    setShowModal(!showModal);
+
+    const player = new Audio.Sound();
+
+    await player.loadAsync(require('../assets/instruction.mp3'), {
+      shouldPlay: true,
+    });
+
+    await player.setPositionAsync(0);
+    await player.playAsync();
+
+    console.log('after');
+  };
+
   return (
     <Modal
       animationType="slide"
@@ -22,7 +39,7 @@ const ModalComponent = () => {
           </Text>
           <Pressable
             style={[styles.button, styles.buttonClose]}
-            onPress={() => setShowModal(!showModal)}
+            onPress={() => closeModalEvents()}
           >
             <Text style={styles.textStyle}>Sätt igång introduktionen</Text>
           </Pressable>
@@ -50,12 +67,12 @@ const styles = StyleSheet.create({
   },
   button: {
     borderRadius: 20,
-    padding: 10,
+    padding: 6,
     elevation: 2,
   },
   buttonClose: {
     backgroundColor: '#83F8A4',
-    paddingHorizontal: 32,
+    paddingHorizontal: 24,
     paddingVertical: 12,
     borderRadius: 8,
     marginBottom: 2,
