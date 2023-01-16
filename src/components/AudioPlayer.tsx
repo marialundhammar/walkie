@@ -5,6 +5,7 @@ import { View, Pressable, Text } from 'react-native';
 import { UserLocationContext } from '../context/userLocationContext';
 import ProgressBar from './Progressbar';
 import Finished from './Finished';
+import soundLibrary from './SoundLibrary';
 
 let nextTrack: number = 1;
 let statusDuration: number;
@@ -38,120 +39,54 @@ const AudioPlayer: FC = () => {
     await player.playAsync();
   };
 
+  const loadSounds = async (track) => {
+    try {
+      const { status } = await Audio.Sound.createAsync(track);
+      if (status.isLoaded) {
+        statusDuration = status.durationMillis;
+        setDuration(statusDuration);
+      } else {
+        console.error('track not loaded');
+      }
+
+      await player.loadAsync(track),
+        {
+          shouldPlay: true,
+        };
+
+      playLoadedSound();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const handlePlaySound = async () => {
     setStatus(!status);
     setIsPlaying(true);
     console.log('playing');
     if (nextTrack === 1) {
-      try {
-        const { status } = await Audio.Sound.createAsync(
-          require('../assets/tracks/track-1.mp3')
-        );
-        if (status.isLoaded) {
-          statusDuration = status.durationMillis;
-          setDuration(statusDuration);
-        } else {
-          console.error('track not loaded');
-        }
-
-        await player.loadAsync(require('../assets/tracks/track-1.mp3'), {
-          shouldPlay: true,
-        });
-
-        playLoadedSound();
-      } catch (error) {
-        console.log(error);
-      }
+      loadSounds(soundLibrary.track1);
     }
-
     if (nextTrack === 2) {
-      try {
-        const { status } = await Audio.Sound.createAsync(
-          require('../assets/tracks/track-2.mp3')
-        );
-
-        if (status.isLoaded) {
-          statusDuration = status.durationMillis;
-          setDuration(statusDuration);
-        } else {
-          console.error('track not loaded');
-        }
-        await player.loadAsync(require('../assets/tracks/track-2.mp3'), {
-          shouldPlay: true,
-        });
-        playLoadedSound();
-      } catch (error) {
-        console.log(error);
-      }
+      loadSounds(soundLibrary.track2);
     }
     if (nextTrack === 3) {
-      try {
-        const { status } = await Audio.Sound.createAsync(
-          require('../assets/tracks/track-3.mp3')
-        );
-
-        if (status.isLoaded) {
-          statusDuration = status.durationMillis;
-          setDuration(statusDuration);
-        } else {
-          console.error('track not loaded');
-        }
-        await player.loadAsync(require('../assets/tracks/track-3.mp3'), {
-          shouldPlay: true,
-        });
-        playLoadedSound();
-      } catch (error) {
-        console.log(error);
-      }
+      loadSounds(soundLibrary.track3);
     }
     if (nextTrack === 4) {
-      try {
-        const { status } = await Audio.Sound.createAsync(
-          require('../assets/tracks/track-4.mp3')
-        );
-
-        if (status.isLoaded) {
-          statusDuration = status.durationMillis;
-          setDuration(statusDuration);
-        } else {
-          console.error('track not loaded');
-        }
-        await player.loadAsync(require('../assets/tracks/track-4.mp3'), {
-          shouldPlay: true,
-        });
-        playLoadedSound();
-      } catch (error) {
-        console.log(error);
-      }
+      loadSounds(soundLibrary.track4);
     }
     if (nextTrack === 5) {
-      try {
-        const { status } = await Audio.Sound.createAsync(
-          require('../assets/tracks/track-5.mp3')
-        );
+      loadSounds(soundLibrary.track5);
 
-        if (status.isLoaded) {
-          statusDuration = status.durationMillis;
-          setDuration(statusDuration);
-        } else {
-          console.error('track not loaded');
-        }
-        await player.loadAsync(require('../assets/tracks/track-5.mp3'), {
-          shouldPlay: true,
-        });
-        await playLoadedSound();
-        await delay(duration);
-        setStoryFinished(true);
-      } catch (error) {
-        console.log(error);
-      }
+      setStoryFinished(true);
     }
   };
 
   const replaySound = async () => {
     console.log('halloj');
-    await player.setPositionAsync(0);
-    await player.playAsync();
+    await player.replayAsync();
+    ('');
   };
 
   const goNextTrack = async () => {

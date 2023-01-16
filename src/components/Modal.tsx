@@ -14,7 +14,7 @@ const ModalComponent = () => {
 
     let player: any = new Audio.Sound();
 
-    await player.loadAsync(require('../assets/instruction.mp3'), {
+    await player.loadAsync(require('../assets/tracks/instruction.mp3'), {
       shouldPlay: true,
     });
     await player.setPositionAsync(0);
