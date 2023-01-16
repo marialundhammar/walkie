@@ -60,8 +60,6 @@ const UserLocationProvider = ({ children }) => {
       lat: lat,
       long: long,
     });
-
-    console.log(userLocation);
   };
 
   distance = calculateDistance(
@@ -77,7 +75,6 @@ const UserLocationProvider = ({ children }) => {
     } else {
       setShowAudioPlayer(false);
     }
-    console.log('this is distance', distance);
   }, [distance]);
 
   const updateMarker = async (lat: number, long: number, title: string) => {

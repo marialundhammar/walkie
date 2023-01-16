@@ -1,9 +1,10 @@
 import { Audio } from 'expo-av';
 import styles from '../assets/styles/styles';
 import React, { FC, useContext, useState } from 'react';
-import { View, StyleSheet, Pressable, Text } from 'react-native';
+import { View, Pressable, Text } from 'react-native';
 import { UserLocationContext } from '../context/userLocationContext';
 import ProgressBar from './Progressbar';
+import Finished from './Finished';
 
 let nextTrack: number = 1;
 let statusDuration: number;
@@ -18,6 +19,7 @@ const AudioPlayer: FC = () => {
     useContext(UserLocationContext);
   const [status, setStatus] = useState<boolean>(false);
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
+  const [isWalking, setIsWalking] = useState<boolean>(false);
   const [duration, setDuration] = useState<number>(0);
   const nextMarkerArrayLat: number[] = [
     55.59547471790409, 55.59267028199996, 55.59126244128724, 55.59312389421599,
@@ -39,6 +41,7 @@ const AudioPlayer: FC = () => {
   const handlePlaySound = async () => {
     setStatus(!status);
     setIsPlaying(true);
+    console.log('playing');
     if (nextTrack === 1) {
       try {
         const { status } = await Audio.Sound.createAsync(
@@ -145,8 +148,10 @@ const AudioPlayer: FC = () => {
     }
   };
 
-  const replay = async () => {
-    player.playAsync();
+  const replaySound = async () => {
+    console.log('halloj');
+    await player.setPositionAsync(0);
+    await player.playAsync();
   };
 
   const goNextTrack = async () => {
@@ -161,10 +166,8 @@ const AudioPlayer: FC = () => {
       `Track ${nextTrack}`
     );
     i++;
+    setIsWalking(true);
   };
-  let titlePlay: string = 'Play Sound';
-  let titleReplay: string = 'Replay';
-  let titleNext: string = 'Next';
 
   if (showAudioPlayer) {
     if (!isPlaying) {
@@ -175,31 +178,23 @@ const AudioPlayer: FC = () => {
             disabled={isPlaying}
             onPress={handlePlaySound}
           >
-            <Text style={styles.textButton}>{titlePlay}</Text>
+            <Text style={styles.textButton}>Play Sound</Text>
           </Pressable>
         </View>
       );
     }
     if (storyFinised) {
-      return (
-        <View style={styles.finishedContainer}>
-          <Text style={styles.textButton}>finished</Text>
-        </View>
-      );
+      return <Finished />;
     } else {
       return (
         <View style={styles.container}>
           <ProgressBar duration={duration} />
           <View>
-            <Pressable
-              disabled={isPlaying}
-              style={styles.button}
-              onPress={replay}
-            >
-              <Text style={styles.textButton}>{titleReplay}</Text>
+            <Pressable style={styles.button} onPress={replaySound}>
+              <Text style={styles.textButton}>Replay</Text>
             </Pressable>
             <Pressable style={styles.button} onPress={goNextTrack}>
-              <Text style={styles.textButton}>{titleNext}</Text>
+              <Text style={styles.textButton}>Next</Text>
             </Pressable>
           </View>
         </View>

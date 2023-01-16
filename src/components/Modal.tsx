@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Alert, Modal, Text, View, Pressable, StyleSheet } from 'react-native';
+import { Modal, Text, View, Pressable } from 'react-native';
 import { UserLocationContext } from '../context/userLocationContext';
 import { Audio } from 'expo-av';
 import styles from '../assets/styles/styles';
@@ -10,7 +10,6 @@ const ModalComponent = () => {
   const distanceOneDec = Math.round(distance * 10) / 10;
 
   const closeModalEvents = async () => {
-    console.log('hej från closeModalEvents');
     setShowModal(!showModal);
 
     let player: any = new Audio.Sound();

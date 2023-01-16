@@ -29,7 +29,6 @@ const Map = () => {
 
   const delayOfUserPosition = async () => {
     await delay(1000);
-    console.log('delay delay');
     setUpdateUserLocationDelay(i);
     i++;
   };
@@ -45,7 +44,6 @@ const Map = () => {
       location = await Location.getCurrentPositionAsync({});
 
       updateUserLocation(location.coords.latitude, location.coords.longitude);
-      console.log('userUpdate', userLocation.lat, userLocation.long);
       delayOfUserPosition();
     })();
   }, []);

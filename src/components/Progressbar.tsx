@@ -1,13 +1,9 @@
-import React, { useEffect, useRef } from 'react';
-import { Animated, View, StyleSheet, Text } from 'react-native';
+import React, { useEffect } from 'react';
+import { Animated, View, Text } from 'react-native';
 import styles from '../assets/styles/styles';
 
 const ProgressBar = (duration) => {
-  console.log('this is duration', duration);
   const barWidth = new Animated.Value(0);
-
-  console.log('progressbar', duration.duration);
-
   useEffect(() => {
     Animated.timing(barWidth, {
       toValue: 240,
@@ -18,7 +14,6 @@ const ProgressBar = (duration) => {
 
   const getDuration = (duration) => {
     let time: number = duration / 1000;
-    console.log(time);
   };
 
   getDuration(duration.duration);
