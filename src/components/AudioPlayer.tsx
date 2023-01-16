@@ -78,15 +78,8 @@ const AudioPlayer: FC = () => {
     }
     if (nextTrack === 5) {
       loadSounds(soundLibrary.track5);
-
       setStoryFinished(true);
     }
-  };
-
-  const replaySound = async () => {
-    console.log('halloj');
-    await player.replayAsync();
-    ('');
   };
 
   const goNextTrack = async () => {
@@ -125,7 +118,7 @@ const AudioPlayer: FC = () => {
         <View style={styles.container}>
           <ProgressBar duration={duration} />
           <View>
-            <Pressable style={styles.button} onPress={replaySound}>
+            <Pressable style={styles.button} onPress={handlePlaySound}>
               <Text style={styles.textButton}>Replay</Text>
             </Pressable>
             <Pressable style={styles.button} onPress={goNextTrack}>
