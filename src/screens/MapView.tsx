@@ -1,10 +1,10 @@
-import { StyleSheet, SafeAreaView, Button, View, Text } from 'react-native';
+import { SafeAreaView, Button, View, Text } from 'react-native';
 import Map from '../components/Map';
 import AudioPlayer from '../components/AudioPlayer';
 import React, { useContext, useEffect } from 'react';
 import { UserLocationContext } from '../context/userLocationContext';
 import ModalComponent from '../components/Modal';
-import RollingText from 'react-native-rolling-text';
+import styles from '../assets/styles/styles';
 
 const MapView = () => {
   const { updateUserLocation, setShowModal } = useContext(UserLocationContext);
@@ -34,7 +34,7 @@ const MapView = () => {
   }, []);
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={styles.containerMap}>
       <ModalComponent />
 
       <Button title="Fake UserLocation1" onPress={fakeUserLocation1} />
@@ -49,26 +49,5 @@ const MapView = () => {
     </SafeAreaView>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'rgb(30,30,30)',
-  },
-
-  input: {
-    height: 40,
-    margin: 12,
-    borderWidth: 1,
-    padding: 10,
-  },
-
-  button: {
-    height: 40,
-    margin: 12,
-    borderWidth: 1,
-    padding: 10,
-  },
-});
 
 export default MapView;

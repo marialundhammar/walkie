@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Alert, Modal, Text, View, Pressable, StyleSheet } from 'react-native';
 import { UserLocationContext } from '../context/userLocationContext';
 import { Audio } from 'expo-av';
+import styles from '../assets/styles/styles';
 
 const ModalComponent = () => {
   const { showModal, setShowModal, distance } = useContext(UserLocationContext);
@@ -46,45 +47,5 @@ const ModalComponent = () => {
     </Modal>
   );
 };
-
-const styles = StyleSheet.create({
-  centeredView: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: 22,
-  },
-  modalView: {
-    width: 300,
-    height: 200,
-    backgroundColor: 'black',
-    borderRadius: 20,
-    padding: 35,
-    alignItems: 'center',
-    elevation: 5,
-  },
-  button: {
-    borderRadius: 20,
-    padding: 6,
-    elevation: 2,
-  },
-  buttonClose: {
-    backgroundColor: '#83F8A4',
-    paddingHorizontal: 24,
-    paddingVertical: 12,
-    borderRadius: 8,
-    marginBottom: 2,
-  },
-  textStyle: {
-    color: 'black',
-    fontWeight: 'bold',
-    textAlign: 'center',
-  },
-  modalText: {
-    color: 'white',
-    marginBottom: 15,
-    textAlign: 'center',
-  },
-});
 
 export default ModalComponent;

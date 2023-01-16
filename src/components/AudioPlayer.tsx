@@ -1,5 +1,5 @@
 import { Audio } from 'expo-av';
-
+import styles from '../assets/styles/styles';
 import React, { FC, useContext, useState } from 'react';
 import { View, StyleSheet, Pressable, Text } from 'react-native';
 import { UserLocationContext } from '../context/userLocationContext';
@@ -183,9 +183,7 @@ const AudioPlayer: FC = () => {
     if (storyFinised) {
       return (
         <View style={styles.finishedContainer}>
-          <Text style={styles.textButton} t>
-            finished
-          </Text>
+          <Text style={styles.textButton}>finished</Text>
         </View>
       );
     } else {
@@ -209,44 +207,5 @@ const AudioPlayer: FC = () => {
     }
   }
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'black',
-    height: 120,
-    zIndex: 100,
-    marginBottom: 20,
-  },
-
-  finishedContainer: {
-    backgroundColor: '#83F8A4',
-    height: 120,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-
-  button: {
-    borderRadius: 10,
-    backgroundColor: '#83F8A4',
-    margin: 8,
-    borderWidth: 1,
-    borderColor: '#65C37F',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-
-  textButton: {
-    color: 'black',
-    fontSize: 16,
-    letterSpacing: 0.25,
-    fontWeight: 'bold',
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 8,
-  },
-});
 
 export default AudioPlayer;
