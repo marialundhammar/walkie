@@ -1,5 +1,9 @@
-import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
-import { Button, StyleSheet } from 'react-native';
+import MapView, {
+  PROVIDER_GOOGLE,
+  Marker,
+  CalloutSubview,
+} from 'react-native-maps';
+import { Text, StyleSheet } from 'react-native';
 import React, { useState, useEffect, useContext } from 'react';
 import * as Location from 'expo-location';
 import { UserLocationContext } from '../context/userLocationContext';
@@ -59,7 +63,7 @@ const Map = () => {
         showsUserLocation={true}
         showsCompass={true}
       >
-        {/*      <Marker
+        <Marker
           style={{ width: 60, height: 40 }}
           coordinate={{
             latitude: userLocation.lat,
@@ -68,7 +72,7 @@ const Map = () => {
           pinColor="blue"
           title="You are here"
         ></Marker>
- */}
+
         <Marker
           style={{ width: 60, height: 40 }}
           coordinate={{
@@ -88,6 +92,11 @@ const styles = StyleSheet.create({
     height: '100%',
     zIndex: -1,
     flex: 1,
+  },
+
+  titleStyle: {
+    color: 'white',
+    marginBottom: 50,
   },
 });
 

@@ -47,9 +47,9 @@ const UserLocationProvider = ({ children }) => {
     return new Promise((resolve) => setTimeout(resolve, time));
   }
 
-  const [nextMarkerLat, setNextMarkerLat] = useState<number>(55.59237421838877);
+  const [nextMarkerLat, setNextMarkerLat] = useState<number>(55.59422981350562);
   const [nextMarkerLong, setNextMarkerLong] =
-    useState<number>(13.015350019480769);
+    useState<number>(13.01321370453578);
   const [nextMarkerTitle, setNextMarkerTitle] =
     useState<string>('Start Position');
   userLocationArrayLat = [55.59338, 55.59265, 55.5942];
@@ -77,7 +77,7 @@ const UserLocationProvider = ({ children }) => {
     } else {
       setShowAudioPlayer(false);
     }
-    console.log(distance);
+    console.log('this is distance', distance);
   }, [distance]);
 
   const updateMarker = async (lat: number, long: number, title: string) => {

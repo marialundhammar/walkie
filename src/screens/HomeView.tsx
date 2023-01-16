@@ -3,8 +3,6 @@ import { StyleSheet, SafeAreaView, Text, Pressable, Image } from 'react-native';
 export default function HomeView({ navigation }) {
   const title = `Let's start`;
 
-  console.log('helloooo');
-
   return (
     <SafeAreaView style={styles.container}>
       <Image style={styles.image} source={require('../assets/loga.png')} />
