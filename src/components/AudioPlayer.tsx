@@ -105,7 +105,7 @@ const AudioPlayer: FC = () => {
   if (showAudioPlayer) {
     if (!isPlaying) {
       return (
-        <View style={styles.containerColumn}>
+        <View style={styles.containerAudio}>
           <Pressable
             style={styles.button}
             disabled={isPlaying}
@@ -120,7 +120,7 @@ const AudioPlayer: FC = () => {
       return <Finished />;
     } else {
       return (
-        <View style={styles.containerRow}>
+        <View style={styles.containerAudio}>
           <ProgressBar duration={duration} />
           <View>
             <Pressable

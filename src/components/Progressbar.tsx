@@ -6,7 +6,7 @@ const ProgressBar = (duration) => {
   const barWidth = new Animated.Value(0);
   useEffect(() => {
     Animated.timing(barWidth, {
-      toValue: 240,
+      toValue: 220,
       duration: duration.duration,
       useNativeDriver: false,
     }).start();
@@ -14,7 +14,6 @@ const ProgressBar = (duration) => {
 
   return (
     <View style={styles.barContainer}>
-      <Text style={styles.titleStyle}>{duration.duration}</Text>
       <Animated.View style={[styles.progressBar, { width: barWidth }]} />
     </View>
   );

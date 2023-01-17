@@ -42,7 +42,7 @@ export default StyleSheet.create({
   button: {
     borderRadius: 10,
     backgroundColor: '#83F8A4',
-    marginTop: 32,
+    marginTop: 16,
     justifyContent: 'center',
     alignItems: 'center',
     paddingHorizontal: 34,
@@ -67,7 +67,7 @@ export default StyleSheet.create({
 
   modalView: {
     width: 300,
-    height: 320,
+    height: 280,
     backgroundColor: 'black',
     borderRadius: 20,
     padding: 35,
@@ -92,7 +92,7 @@ export default StyleSheet.create({
     height: 10,
     backgroundColor: '#83F8A4',
     borderRadius: 5,
-    width: 200,
+    width: 180,
   },
 
   containerMap: {
@@ -100,11 +100,13 @@ export default StyleSheet.create({
     backgroundColor: 'rgb(30,30,30)',
   },
 
-  input: {
-    height: 40,
-    margin: 12,
-    borderWidth: 1,
-    padding: 10,
+  containerAudio: {
+    flexDirection: 'row',
+    backgroundColor: 'black',
+    color: 'white',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: 160,
   },
 
   buttonMap: {
