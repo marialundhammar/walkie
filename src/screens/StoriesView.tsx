@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-  Pressable,
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  Image,
-  View,
-} from 'react-native';
+import { Pressable, SafeAreaView, Text, Image, View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import styles from '../assets/styles/styles';
 

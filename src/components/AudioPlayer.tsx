@@ -10,9 +10,17 @@ import { Ionicons } from '@expo/vector-icons';
 let nextTrack: number = 1;
 let i: number = 0;
 
-const AudioPlayer: FC = () => {
-  const { showAudioPlayer, setShowAudioPlayer, updateMarker } =
-    useContext(UserLocationContext);
+function delay(time) {
+  return new Promise((resolve) => setTimeout(resolve, time));
+}
+
+const AudioPlayer: FC = (navigation) => {
+  const {
+    showAudioPlayer,
+    setShowAudioPlayer,
+    updateMarker,
+    setStoryFinished,
+  } = useContext(UserLocationContext);
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [sound, setSound] = useState<any>(null);
   const [duration, setDuration] = useState(0);
@@ -26,7 +34,6 @@ const AudioPlayer: FC = () => {
     13.019219154211706,
   ];
 
-  const [storyFinised, setStoryFinished] = useState<boolean>(false);
   const [playbackStatus, setPlaybackStatus] = useState<string>('stopped');
 
   useEffect(() => {
@@ -59,7 +66,6 @@ const AudioPlayer: FC = () => {
     let status = await sound.getStatusAsync();
     try {
       await sound.stopAsync();
-      await sound.setPositionAsync(status.positionMillis);
       await sound.playAsync();
       setPlaybackStatus('playing');
     } catch (error) {
@@ -113,7 +119,7 @@ const AudioPlayer: FC = () => {
     }
     if (nextTrack === 5) {
       playSound(soundLibrary.track5);
-      setStoryFinished(true);
+      console.log(duration);
     }
   };
 
@@ -128,9 +134,10 @@ const AudioPlayer: FC = () => {
       `Track ${nextTrack}`
     );
     i++;
+    if (nextTrack === 6) {
+      setStoryFinished(true);
+    }
   };
-
-  console.log('THIS IS THE REMAINING TIME', duration, position);
 
   if (showAudioPlayer) {
     if (!isPlaying) {
@@ -172,9 +179,6 @@ const AudioPlayer: FC = () => {
           </Pressable>
         </View>
       );
-    }
-    if (storyFinised) {
-      return <Finished />;
     }
   }
 };

@@ -1,13 +1,5 @@
 import React, { FC, PropsWithChildren, useEffect, useRef } from 'react';
-import {
-  StyleSheet,
-  SafeAreaView,
-  Text,
-  Pressable,
-  Image,
-  Animated,
-  View,
-} from 'react-native';
+import { SafeAreaView, Text, Pressable, Animated, View } from 'react-native';
 import type { ViewStyle } from 'react-native';
 import { SvgXml } from 'react-native-svg';
 import styles from '../assets/styles/styles';
@@ -71,32 +63,3 @@ export default function HomeView({ navigation }) {
     </SafeAreaView>
   );
 }
-/* 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'black',
-    color: 'white',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-
-  buttonContainer: {
-    marginBottom: 80,
-  },
-
-  text: {
-    color: 'black',
-    fontSize: 16,
-    letterSpacing: 0.25,
-    fontWeight: 'bold',
-  },
-
-  button: {
-    backgroundColor: '#83F8A4',
-    paddingHorizontal: 32,
-    paddingVertical: 12,
-    borderRadius: 8,
-    marginTop: 32,
-  },
-}); */

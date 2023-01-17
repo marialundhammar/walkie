@@ -7,13 +7,20 @@ import ModalComponent from '../components/Modal';
 import styles from '../assets/styles/styles';
 import FakeButtons from '../components/FakeButtons';
 
-const MapView = () => {
-  const { setShowModal } = useContext(UserLocationContext);
+const MapView = ({ navigation }) => {
+  const { setShowModal, storyFinished } = useContext(UserLocationContext);
   const [showFakeButtons, setShowFakeButtons] = useState<Boolean>(false);
 
   useEffect(() => {
     setShowModal(true);
   }, []);
+
+  useEffect(() => {
+    if (storyFinished) {
+      navigation.navigate('EndingView');
+    }
+    console.log(storyFinished);
+  }, [navigation, storyFinished]);
 
   return (
     <SafeAreaView style={styles.containerMap}>
