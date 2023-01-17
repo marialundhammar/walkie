@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Modal, Text, View, Pressable } from 'react-native';
+import { Modal, Text, View, Pressable, ActivityIndicator } from 'react-native';
 import { UserLocationContext } from '../context/userLocationContext';
 import { Audio } from 'expo-av';
 import styles from '../assets/styles/styles';
@@ -22,8 +22,24 @@ const ModalComponent = () => {
     await player.playAsync();
   };
 
-  return (
-    locationLoaded && (
+  if (!locationLoaded) {
+    return (
+      <Modal animationType="slide" transparent={true} visible={showModal}>
+        <View style={styles.centeredView}>
+          <View style={styles.modalView}>
+            <Text>
+              <View style={styles.containerColumn}>
+                <ActivityIndicator size="large" color="#83F8A4" />
+              </View>
+            </Text>
+            <Text style={styles.modalText}>Hämtar din position ...</Text>
+          </View>
+        </View>
+      </Modal>
+    );
+  }
+  if (locationLoaded) {
+    return (
       <Modal animationType="slide" transparent={true} visible={showModal}>
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
@@ -46,8 +62,8 @@ const ModalComponent = () => {
           </View>
         </View>
       </Modal>
-    )
-  );
+    );
+  }
 };
 
 export default ModalComponent;

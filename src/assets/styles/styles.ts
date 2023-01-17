@@ -25,6 +25,7 @@ export default StyleSheet.create({
 
   containerColumn: {
     flex: 1,
+    flexDirection: 'column',
     backgroundColor: 'black',
     color: 'white',
     alignItems: 'center',
@@ -66,7 +67,7 @@ export default StyleSheet.create({
 
   modalView: {
     width: 300,
-    height: 300,
+    height: 320,
     backgroundColor: 'black',
     borderRadius: 20,
     padding: 35,

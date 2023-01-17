@@ -105,7 +105,7 @@ const AudioPlayer: FC = () => {
   if (showAudioPlayer) {
     if (!isPlaying) {
       return (
-        <View style={styles.container}>
+        <View style={styles.containerColumn}>
           <Pressable
             style={styles.button}
             disabled={isPlaying}
