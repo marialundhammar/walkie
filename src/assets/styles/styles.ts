@@ -164,4 +164,10 @@ export default StyleSheet.create({
     justifyContent: 'center',
     borderRadius: 8,
   },
+
+  icons: {
+    color: '#83F8A4',
+    fontSize: 86,
+    border: 'white',
+  },
 });
