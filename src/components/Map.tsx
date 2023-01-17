@@ -64,7 +64,7 @@ const Map = () => {
         showsUserLocation={true}
         showsCompass={true}
       >
-        <Marker
+        {/*    <Marker
           style={{ width: 60, height: 40 }}
           coordinate={{
             latitude: userLocation.lat,
@@ -72,7 +72,7 @@ const Map = () => {
           }}
           pinColor="blue"
           title="You are here"
-        ></Marker>
+        ></Marker> */}
 
         <Marker
           style={{ width: 60, height: 40 }}

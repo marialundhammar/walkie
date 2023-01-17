@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from 'react';
+import { Audio } from 'expo-av';
 
 export const UserLocationContext = createContext<{
   updateUserLocation: (lat: number, long: number) => void;
@@ -71,8 +72,16 @@ const UserLocationProvider = ({ children }) => {
     nextMarkerLong
   );
 
+  let sound: any = new Audio.Sound();
+  const playAlertSound = async () => {
+    await sound.loadAsync(require('../assets/tracks/alert.mp3'));
+    await sound.setPositionAsync(0);
+    await sound.playAsync();
+  };
+
   useEffect(() => {
     if (distance < 0.05) {
+      playAlertSound();
       setShowAudioPlayer(true);
     } else {
       setShowAudioPlayer(false);
