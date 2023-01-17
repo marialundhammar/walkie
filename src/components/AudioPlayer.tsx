@@ -20,7 +20,8 @@ const AudioPlayer: FC = () => {
     useContext(UserLocationContext);
   const [status, setStatus] = useState<boolean>(false);
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
-  const [isWalking, setIsWalking] = useState<boolean>(false);
+  const [isDisabled, setIsDisabled] = useState<boolean>(false);
+
   const [duration, setDuration] = useState<number>(0);
   const nextMarkerArrayLat: number[] = [
     55.59547471790409, 55.59267028199996, 55.59126244128724, 55.59312389421599,
@@ -61,6 +62,7 @@ const AudioPlayer: FC = () => {
   };
 
   const handlePlaySound = async () => {
+    setIsDisabled(true);
     setStatus(!status);
     setIsPlaying(true);
     console.log('playing');
@@ -80,6 +82,10 @@ const AudioPlayer: FC = () => {
       loadSounds(soundLibrary.track5);
       setStoryFinished(true);
     }
+
+    await player.unloadAsync();
+    await delay(duration);
+    setIsDisabled(false);
   };
 
   const goNextTrack = async () => {
@@ -94,7 +100,6 @@ const AudioPlayer: FC = () => {
       `Track ${nextTrack}`
     );
     i++;
-    setIsWalking(true);
   };
 
   if (showAudioPlayer) {
@@ -115,13 +120,21 @@ const AudioPlayer: FC = () => {
       return <Finished />;
     } else {
       return (
-        <View style={styles.container}>
+        <View style={styles.containerRow}>
           <ProgressBar duration={duration} />
           <View>
-            <Pressable style={styles.button} onPress={handlePlaySound}>
+            <Pressable
+              style={styles.button}
+              onPress={handlePlaySound}
+              disabled={isDisabled}
+            >
               <Text style={styles.textButton}>Replay</Text>
             </Pressable>
-            <Pressable style={styles.button} onPress={goNextTrack}>
+            <Pressable
+              style={styles.button}
+              onPress={goNextTrack}
+              disabled={isDisabled}
+            >
               <Text style={styles.textButton}>Next</Text>
             </Pressable>
           </View>

@@ -13,7 +13,7 @@ export default StyleSheet.create({
     marginBottom: 50,
   },
 
-  container: {
+  containerRow: {
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
@@ -21,6 +21,14 @@ export default StyleSheet.create({
     height: 120,
     zIndex: 100,
     marginBottom: 20,
+  },
+
+  containerColumn: {
+    flex: 1,
+    backgroundColor: 'black',
+    color: 'white',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 
   finishedContainer: {
@@ -33,11 +41,11 @@ export default StyleSheet.create({
   button: {
     borderRadius: 10,
     backgroundColor: '#83F8A4',
-    margin: 8,
-    borderWidth: 1,
-    borderColor: '#65C37F',
+    marginTop: 32,
     justifyContent: 'center',
     alignItems: 'center',
+    paddingHorizontal: 34,
+    paddingVertical: 8,
   },
 
   textButton: {
@@ -47,7 +55,7 @@ export default StyleSheet.create({
     fontWeight: 'bold',
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 8,
+    padding: 4,
   },
   centeredView: {
     flex: 1,
@@ -55,9 +63,10 @@ export default StyleSheet.create({
     alignItems: 'center',
     marginTop: 22,
   },
+
   modalView: {
     width: 300,
-    height: 250,
+    height: 300,
     backgroundColor: 'black',
     borderRadius: 20,
     padding: 35,
@@ -65,18 +74,6 @@ export default StyleSheet.create({
     elevation: 5,
   },
 
-  buttonClose: {
-    backgroundColor: '#83F8A4',
-    paddingHorizontal: 24,
-    paddingVertical: 12,
-    borderRadius: 8,
-    marginBottom: 2,
-  },
-  textStyle: {
-    color: 'black',
-    fontWeight: 'bold',
-    textAlign: 'center',
-  },
   modalText: {
     color: 'white',
     marginBottom: 15,

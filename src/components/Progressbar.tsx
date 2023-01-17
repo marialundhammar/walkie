@@ -12,15 +12,9 @@ const ProgressBar = (duration) => {
     }).start();
   });
 
-  const getDuration = (duration) => {
-    let time: number = duration / 1000;
-  };
-
-  getDuration(duration.duration);
-
   return (
     <View style={styles.barContainer}>
-      <Text>{duration.duration}</Text>
+      <Text style={styles.titleStyle}>{duration.duration}</Text>
       <Animated.View style={[styles.progressBar, { width: barWidth }]} />
     </View>
   );

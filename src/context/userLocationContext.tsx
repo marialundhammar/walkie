@@ -9,9 +9,11 @@ export const UserLocationContext = createContext<{
   distance: number;
   showAudioPlayer: boolean;
   showModal: boolean;
+  locationLoaded: boolean;
   setShowAudioPlayer: (boolean) => void;
   updateMarker: (lat: number, long: number, title: string) => void;
   setShowModal: (boolean) => void;
+  setLocationLoaded: (boolean) => void;
 }>(null);
 
 let userLocationArrayLat: number[];
@@ -35,11 +37,8 @@ const calculateDistance = (
 };
 
 const UserLocationProvider = ({ children }) => {
-  const [userLocation, setUserLocation] = useState({
-    lat: 0,
-    long: 0,
-  });
-
+  const [userLocation, setUserLocation] = useState({ lat: 0, long: 0 });
+  const [locationLoaded, setLocationLoaded] = useState<boolean>(false);
   const [showAudioPlayer, setShowAudioPlayer] = useState<boolean>(false);
   const [showModal, setShowModal] = useState<boolean>(false);
 
@@ -96,7 +95,9 @@ const UserLocationProvider = ({ children }) => {
         setShowAudioPlayer,
         updateMarker,
         setShowModal,
+        setLocationLoaded,
         showModal,
+        locationLoaded,
       }}
     >
       {children}

@@ -21,6 +21,7 @@ const Map = () => {
     nextMarkerLat,
     nextMarkerLong,
     nextMarkerTitle,
+    setLocationLoaded,
   } = useContext(UserLocationContext);
 
   function delay(time) {
@@ -42,7 +43,7 @@ const Map = () => {
       }
 
       location = await Location.getCurrentPositionAsync({});
-
+      setLocationLoaded(true);
       updateUserLocation(location.coords.latitude, location.coords.longitude);
       delayOfUserPosition();
     })();
