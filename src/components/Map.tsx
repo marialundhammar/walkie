@@ -1,9 +1,4 @@
-import MapView, {
-  PROVIDER_GOOGLE,
-  Marker,
-  CalloutSubview,
-} from 'react-native-maps';
-import { Text, StyleSheet } from 'react-native';
+import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
 import React, { useState, useEffect, useContext } from 'react';
 import * as Location from 'expo-location';
 import { UserLocationContext } from '../context/userLocationContext';
@@ -49,6 +44,8 @@ const Map = () => {
     })();
   }, []);
 
+  let pinColor = '#B862B0';
+
   return (
     <>
       <MapView.Animated
@@ -80,6 +77,7 @@ const Map = () => {
             latitude: nextMarkerLat,
             longitude: nextMarkerLong,
           }}
+          pinColor="#B862B0"
           title={nextMarkerTitle}
         ></Marker>
       </MapView.Animated>

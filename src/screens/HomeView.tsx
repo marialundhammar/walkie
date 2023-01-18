@@ -23,16 +23,16 @@ export default function HomeView({ navigation }) {
     useEffect(() => {
       Animated.timing(fadeAnim, {
         toValue: 1,
-        duration: 5000,
+        duration: 4000,
         useNativeDriver: true,
       }).start();
     }, [fadeAnim]);
 
     return (
-      <Animated.View // Special animatable View
+      <Animated.View
         style={{
           ...props.style,
-          opacity: fadeAnim, // Bind opacity to animated value
+          opacity: fadeAnim,
         }}
       >
         {props.children}
@@ -46,7 +46,7 @@ export default function HomeView({ navigation }) {
         style={{
           width: 250,
           height: 50,
-          margin: 60,
+          marginBottom: 120,
         }}
       >
         <SvgImage />

@@ -25,10 +25,10 @@ const MapView = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.containerMap}>
       <Pressable
-        style={styles.button}
+        style={styles.buttonFake}
         onPress={() => setShowFakeButtons(!showFakeButtons)}
       >
-        <Text style={styles.textButton}>Fake Your Locations</Text>
+        <Text style={styles.textButton}>🥸</Text>
       </Pressable>
 
       <ModalComponent />

@@ -1,13 +1,9 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { SafeAreaView, Text } from 'react-native';
 import styles from '../assets/styles/styles';
 
 const EndingView = () => {
-  return (
-    <SafeAreaView style={styles.containerColumn}>
-      <Text style={styles.h2}>HELLOOOO</Text>
-    </SafeAreaView>
-  );
+  return <SafeAreaView style={styles.containerColumn}></SafeAreaView>;
 };
 
 export default EndingView;

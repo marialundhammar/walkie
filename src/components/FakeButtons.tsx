@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
-import { Button } from 'react-native';
+import { Button, View } from 'react-native';
+import styles from '../assets/styles/styles';
 import { UserLocationContext } from '../context/userLocationContext';
 
 const FakeButtons = () => {
@@ -25,13 +26,13 @@ const FakeButtons = () => {
     updateUserLocation(55.59312389421599, 13.019219154211706);
   };
   return (
-    <>
+    <View style={styles.fakeButtonContainer}>
       <Button title="Fake UserLocation1" onPress={fakeUserLocation1} />
       <Button title="Fake UserLocation2" onPress={fakeUserLocation2} />
       <Button title="Fake UserLocation3" onPress={fakeUserLocation3} />
       <Button title="Fake UserLocation4" onPress={fakeUserLocation4} />
       <Button title="Fake UserLocation5" onPress={fakeUserLocation5} />
-    </>
+    </View>
   );
 };
 

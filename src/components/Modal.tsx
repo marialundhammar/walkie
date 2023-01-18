@@ -43,6 +43,7 @@ const ModalComponent = () => {
       <Modal animationType="slide" transparent={true} visible={showModal}>
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
+            <Text style={styles.h3}>HEJ!</Text>
             <Text style={styles.modalText}>
               Du är {distanceOneDec} km från startplatsen. Medans du tar dig dit
               kommer du att få lyssna på en introduktion.

@@ -17,10 +17,17 @@ export default StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'black',
-    height: 120,
     zIndex: 100,
-    marginBottom: 20,
+    margin: 16,
+    marginBottom: 8,
+  },
+
+  h3: {
+    fontSize: 46,
+    color: 'white',
+    letterSpacing: 0.25,
+    fontWeight: 'bold',
+    margin: 16,
   },
 
   containerColumn: {
@@ -39,14 +46,46 @@ export default StyleSheet.create({
     alignItems: 'center',
   },
 
+  fakeButtonContainer: {
+    position: 'absolute',
+    right: 50,
+    marginTop: 95,
+    backgroundColor: '#111621',
+    padding: 16,
+    borderRadius: 10,
+  },
+
   button: {
     borderRadius: 10,
-    backgroundColor: '#83F8A4',
-    marginTop: 16,
+    backgroundColor: '#B862B0',
     justifyContent: 'center',
     alignItems: 'center',
     paddingHorizontal: 34,
     paddingVertical: 8,
+    marginTop: 32,
+  },
+  buttonBorder: {
+    borderRadius: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingHorizontal: 34,
+    paddingVertical: 8,
+    borderWidth: 1,
+    borderColor: '#B862B0',
+    color: '#B862B0',
+  },
+
+  buttonFake: {
+    position: 'absolute',
+    right: 10,
+    top: 60,
+    width: 50,
+    height: 50,
+    borderRadius: 25,
+    backgroundColor: '#B862B0',
+    alignItems: 'center',
+    color: 'pink',
+    justifyContent: 'center',
   },
 
   textButton: {
@@ -58,6 +97,16 @@ export default StyleSheet.create({
     alignItems: 'center',
     padding: 4,
   },
+  textButtonBorder: {
+    color: '#B862B0',
+    fontSize: 16,
+    letterSpacing: 0.25,
+    fontWeight: 'bold',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 4,
+  },
+
   centeredView: {
     flex: 1,
     justifyContent: 'center',
@@ -67,12 +116,13 @@ export default StyleSheet.create({
 
   modalView: {
     width: 300,
-    height: 280,
-    backgroundColor: 'black',
-    borderRadius: 20,
+    backgroundColor: '#111621',
+    borderRadius: 10,
     padding: 35,
     alignItems: 'center',
     elevation: 5,
+    borderColor: '#B862B0',
+    //borderWidth: 0.3,
   },
 
   modalText: {
@@ -97,12 +147,12 @@ export default StyleSheet.create({
 
   containerMap: {
     flex: 1,
-    backgroundColor: 'rgb(30,30,30)',
+    backgroundColor: '#111621',
   },
 
   containerAudio: {
     flexDirection: 'row',
-    backgroundColor: 'black',
+    backgroundColor: '#111621',
     color: 'white',
     alignItems: 'center',
     justifyContent: 'center',
@@ -139,7 +189,7 @@ export default StyleSheet.create({
     fontSize: 16,
     letterSpacing: 0.25,
     fontWeight: 'bold',
-    margin: 16,
+    marginLeft: 16,
   },
 
   storyButtonContainer: {
@@ -150,7 +200,7 @@ export default StyleSheet.create({
 
   storyBodyText: {
     color: 'white',
-    fontSize: 12,
+    fontSize: 14,
     letterSpacing: 0.25,
     margin: 16,
     marginTop: 8,
@@ -166,8 +216,10 @@ export default StyleSheet.create({
   },
 
   icons: {
-    color: '#83F8A4',
+    color: '#B862B0',
     fontSize: 86,
-    border: 'white',
+
+    margin: 24,
+    fontWeight: 'light',
   },
 });

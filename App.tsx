@@ -6,18 +6,52 @@ import EndingView from './src/screens/EndingView';
 import StoriesView from './src/screens/StoriesView';
 import { MyStackParamList } from './src/types/types';
 import UserLocationProvider from './src/context/userLocationContext';
+import { Animated } from 'react-native';
 
 const Stack = createNativeStackNavigator<MyStackParamList>();
+
+const fadeIn = {
+  type: 'fade',
+  duration: 500,
+};
 
 export default function App() {
   return (
     <UserLocationProvider>
       <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen name="HomeView" component={HomeView} />
-          <Stack.Screen name="MapView" component={MapView} />
-          <Stack.Screen name="StoriesView" component={StoriesView} />
-          <Stack.Screen name="EndingView" component={EndingView} />
+        <Stack.Navigator
+          screenOptions={{
+            headerShown: false,
+          }}
+        >
+          <Stack.Screen
+            name="HomeView"
+            component={HomeView}
+            options={{
+              animation: 'fade',
+            }}
+          />
+          <Stack.Screen
+            name="MapView"
+            component={MapView}
+            options={{
+              animation: 'fade',
+            }}
+          />
+          <Stack.Screen
+            name="StoriesView"
+            component={StoriesView}
+            options={{
+              animation: 'fade',
+            }}
+          />
+          <Stack.Screen
+            name="EndingView"
+            component={EndingView}
+            options={{
+              animation: 'fade',
+            }}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </UserLocationProvider>

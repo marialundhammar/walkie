@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Pressable, SafeAreaView, Text, Image, View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import styles from '../assets/styles/styles';
+import { Feather, FontAwesome } from '@expo/vector-icons';
 
 const StoriesView = ({ navigation }) => {
   return (
@@ -13,15 +14,26 @@ const StoriesView = ({ navigation }) => {
         <Text style={styles.h2}>
           Mysteriet i Terrariet, Folkets Park, Malmö
         </Text>
+
         <Image
           style={styles.image}
           source={require('../assets/banner-story.jpg')}
         />
         <View style={styles.storyContent}>
-          <Text style={styles.storyText}>2 km, 40 minuter</Text>
+          <View style={styles.containerRow}>
+            <FontAwesome name="map-marker" size={24} color="#B862B0" />
+            <Text style={styles.storyText}>
+              Start: Folkets Park, Möllevången
+            </Text>
+          </View>
+          <View style={styles.containerRow}>
+            <Feather name="clock" size={24} color="#B862B0" />
+            <Text style={styles.storyText}>Tid: ca 40 minuter </Text>
+          </View>
+
           <Text style={styles.storyBodyText}>
             Mordet i terrariet är en historia i fem delar som utspelar i
-            Folketspark. Du kommer få följa med på en ca 2 kilometer lång
+            Folketspark. Du kommer få följa med på en ca 1,5 kilometer lång
             vandring genom konstiga sammanträffanden och hemligheter. Se till
             att din mobil är fulladdad och att du har med dig bra hörlurar. Ta
             dig till startplatsen och följ sedan instruktionerna i mobilen och i

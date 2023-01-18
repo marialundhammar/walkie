@@ -3,9 +3,10 @@ import styles from '../assets/styles/styles';
 import React, { FC, useContext, useEffect, useState } from 'react';
 import { View, Pressable, Text, Button } from 'react-native';
 import { UserLocationContext } from '../context/userLocationContext';
-import Finished from './Finished';
 import soundLibrary from './SoundLibrary';
-import { Ionicons } from '@expo/vector-icons';
+import { AntDesign, Ionicons, MaterialIcons } from '@expo/vector-icons';
+import * as Animatable from 'react-native-animatable';
+import { Feather } from '@expo/vector-icons';
 
 let nextTrack: number = 1;
 let i: number = 0;
@@ -143,13 +144,15 @@ const AudioPlayer: FC = (navigation) => {
     if (!isPlaying) {
       return (
         <View style={styles.containerAudio}>
-          <Pressable
-            style={styles.button}
-            disabled={isPlaying}
-            onPress={handlePlaySound}
-          >
-            <Text style={styles.textButton}>Play Sound</Text>
-          </Pressable>
+          <Animatable.View animation="bounce" duration={2000}>
+            <Pressable
+              style={styles.button}
+              disabled={isPlaying}
+              onPress={handlePlaySound}
+            >
+              <Text style={styles.textButton}>Play Sound</Text>
+            </Pressable>
+          </Animatable.View>
         </View>
       );
     }
@@ -157,25 +160,27 @@ const AudioPlayer: FC = (navigation) => {
     if (isPlaying) {
       return (
         <View style={styles.containerAudio}>
-          <Pressable style={styles.button} onPress={replayAudio}>
-            <Text style={styles.textButton}>Replay</Text>
+          <Pressable style={styles.buttonBorder} onPress={replayAudio}>
+            <MaterialIcons name="replay" size={24} color="#B862B0" />
+            <Text style={styles.textButtonBorder}>Replay</Text>
           </Pressable>
 
           <View>
             {playbackStatus === 'playing' && (
               <Pressable onPress={pauseAudio}>
-                <Ionicons style={styles.icons} name="ios-pause" />
+                <Ionicons style={styles.icons} name="md-pause-circle-outline" />
               </Pressable>
             )}
             {playbackStatus === 'paused' && (
               <Pressable onPress={resumeAudio}>
-                <Ionicons style={styles.icons} name="ios-play" />
+                <AntDesign name="playcircleo" style={styles.icons} />
               </Pressable>
             )}
           </View>
 
-          <Pressable style={styles.button} onPress={goNextTrack}>
-            <Text style={styles.textButton}>Next</Text>
+          <Pressable style={styles.buttonBorder} onPress={goNextTrack}>
+            <Feather name="arrow-right" size={24} color="#B862B0" />
+            <Text style={styles.textButtonBorder}>Next</Text>
           </Pressable>
         </View>
       );
