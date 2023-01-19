@@ -118,12 +118,12 @@ const AudioPlayer: FC = (navigation) => {
   };
 
   const goNextTrack = async () => {
-    console.log('hi from next track');
     nextTrack++;
     console.log(nextTrack);
-    setIsPlaying(false);
+
     await sound.unloadAsync();
     setShowAudioPlayer(false);
+    setIsPlaying(false);
     updateMarker(
       nextMarkerArrayLat[i],
       nextMarkerArrayLong[i],

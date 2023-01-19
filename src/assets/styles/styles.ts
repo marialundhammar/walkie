@@ -19,7 +19,6 @@ export default StyleSheet.create({
   },
 
   //Containers
-
   containerRow: {
     flexDirection: 'row',
     justifyContent: 'center',
@@ -37,15 +36,6 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-
-  contentColumn: {
-    flex: 1,
-    flexDirection: 'column',
-    color: 'white',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-
   finishedContainer: {
     backgroundColor: '#83F8A4',
     height: 120,
@@ -60,8 +50,20 @@ export default StyleSheet.create({
     backgroundColor: '#111621',
     padding: 16,
     borderRadius: 10,
+    width: 300,
+    borderColor: '#B862B0',
+    borderWidth: 3,
   },
 
+  contentColumn: {
+    flex: 1,
+    flexDirection: 'column',
+    color: 'white',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+
+  //Buttons
   button: {
     borderRadius: 14,
     backgroundColor: '#B862B0',
@@ -71,6 +73,7 @@ export default StyleSheet.create({
     paddingVertical: 8,
     marginTop: 32,
   },
+
   buttonBorder: {
     borderRadius: 10,
     justifyContent: 'center',
@@ -96,6 +99,19 @@ export default StyleSheet.create({
     justifyContent: 'center',
   },
 
+  fakeButtons: {
+    borderRadius: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingHorizontal: 34,
+    paddingVertical: 8,
+    borderWidth: 1,
+    borderColor: '#B862B0',
+    color: '#B862B0',
+    margin: 8,
+  },
+
+  //Button Texts
   textButton: {
     color: 'black',
     fontSize: 18,
@@ -105,6 +121,7 @@ export default StyleSheet.create({
     alignItems: 'center',
     padding: 4,
   },
+
   textButtonBorder: {
     color: '#B862B0',
     fontSize: 16,

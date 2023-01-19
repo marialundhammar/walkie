@@ -9,9 +9,14 @@ import FakeButtons from '../components/FakeButtons';
 import Finished from '../components/Finished';
 
 const MapView = ({ navigation }) => {
-  const { setShowModal, storyFinished, showFinishedModal, navigateToHome } =
-    useContext(UserLocationContext);
-  const [showFakeButtons, setShowFakeButtons] = useState<Boolean>(false);
+  const {
+    setShowModal,
+    storyFinished,
+    showFinishedModal,
+    navigateToHome,
+    setShowFakeButtons,
+    showFakeButtons,
+  } = useContext(UserLocationContext);
 
   useEffect(() => {
     setShowModal(true);

@@ -1,37 +1,53 @@
 import React, { useContext } from 'react';
-import { Button, View } from 'react-native';
+import { Button, Pressable, View, Text } from 'react-native';
 import styles from '../assets/styles/styles';
 import { UserLocationContext } from '../context/userLocationContext';
 
 const FakeButtons = () => {
-  const { updateUserLocation } = useContext(UserLocationContext);
+  const { updateUserLocation, setShowFakeButtons } =
+    useContext(UserLocationContext);
 
   const fakeUserLocation1 = () => {
     updateUserLocation(55.59435538950568, 13.013241100411376);
+    setShowFakeButtons(false);
   };
 
   const fakeUserLocation2 = () => {
     updateUserLocation(55.59551758186783, 13.013496581119055);
+    setShowFakeButtons(false);
   };
 
   const fakeUserLocation3 = () => {
     updateUserLocation(55.59267028199996, 13.01421795796289);
+    setShowFakeButtons(false);
   };
 
   const fakeUserLocation4 = () => {
     updateUserLocation(55.59123156110095, 13.016593774734927);
+    setShowFakeButtons(false);
   };
 
   const fakeUserLocation5 = () => {
     updateUserLocation(55.59312389421599, 13.019219154211706);
+    setShowFakeButtons(false);
   };
   return (
     <View style={styles.fakeButtonContainer}>
-      <Button title="Fake UserLocation1" onPress={fakeUserLocation1} />
-      <Button title="Fake UserLocation2" onPress={fakeUserLocation2} />
-      <Button title="Fake UserLocation3" onPress={fakeUserLocation3} />
-      <Button title="Fake UserLocation4" onPress={fakeUserLocation4} />
-      <Button title="Fake UserLocation5" onPress={fakeUserLocation5} />
+      <Pressable style={styles.fakeButtons} onPress={fakeUserLocation1}>
+        <Text style={styles.textButtonBorder}>Fake User Location 1</Text>
+      </Pressable>
+      <Pressable style={styles.fakeButtons} onPress={fakeUserLocation2}>
+        <Text style={styles.textButtonBorder}>Fake User Location 2</Text>
+      </Pressable>
+      <Pressable style={styles.fakeButtons} onPress={fakeUserLocation3}>
+        <Text style={styles.textButtonBorder}>Fake User Location 3</Text>
+      </Pressable>
+      <Pressable style={styles.fakeButtons} onPress={fakeUserLocation4}>
+        <Text style={styles.textButtonBorder}>Fake User Location 4</Text>
+      </Pressable>
+      <Pressable style={styles.fakeButtons} onPress={fakeUserLocation5}>
+        <Text style={styles.textButtonBorder}>Fake User Location 5</Text>
+      </Pressable>
     </View>
   );
 };
