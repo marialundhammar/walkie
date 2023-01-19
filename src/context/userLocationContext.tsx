@@ -12,11 +12,13 @@ export const UserLocationContext = createContext<{
   showModal: boolean;
   locationLoaded: boolean;
   storyFinished: boolean;
+  showFinishedModal: boolean;
   setStoryFinished: (boolean) => void;
   setShowAudioPlayer: (boolean) => void;
   updateMarker: (lat: number, long: number, title: string) => void;
   setShowModal: (boolean) => void;
   setLocationLoaded: (boolean) => void;
+  setShowFinishedModal: (boolean) => void;
 }>(null);
 
 let userLocationArrayLat: number[];
@@ -45,6 +47,7 @@ const UserLocationProvider = ({ children }) => {
   const [showAudioPlayer, setShowAudioPlayer] = useState<boolean>(false);
   const [showModal, setShowModal] = useState<boolean>(false);
   const [storyFinished, setStoryFinished] = useState<boolean>(false);
+  const [showFinishedModal, setShowFinishedModal] = useState<boolean>(false);
 
   function delay(time) {
     return new Promise((resolve) => setTimeout(resolve, time));
@@ -112,6 +115,8 @@ const UserLocationProvider = ({ children }) => {
         locationLoaded,
         setStoryFinished,
         storyFinished,
+        showFinishedModal,
+        setShowFinishedModal,
       }}
     >
       {children}

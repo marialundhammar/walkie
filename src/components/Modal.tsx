@@ -28,7 +28,7 @@ const ModalComponent = () => {
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
             <Text>
-              <View style={styles.containerColumn}>
+              <View style={styles.contentColumn}>
                 <ActivityIndicator size="large" color="#83F8A4" />
               </View>
             </Text>

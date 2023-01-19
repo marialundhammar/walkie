@@ -20,7 +20,7 @@ const AudioPlayer: FC = (navigation) => {
     showAudioPlayer,
     setShowAudioPlayer,
     updateMarker,
-    setStoryFinished,
+    setShowFinishedModal,
   } = useContext(UserLocationContext);
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [sound, setSound] = useState<any>(null);
@@ -136,7 +136,7 @@ const AudioPlayer: FC = (navigation) => {
     );
     i++;
     if (nextTrack === 6) {
-      setStoryFinished(true);
+      setShowFinishedModal(true);
     }
   };
 
@@ -168,12 +168,22 @@ const AudioPlayer: FC = (navigation) => {
           <View>
             {playbackStatus === 'playing' && (
               <Pressable onPress={pauseAudio}>
-                <Ionicons style={styles.icons} name="md-pause-circle-outline" />
+                <Ionicons
+                  size={72}
+                  color="#B862B0"
+                  fontWeight="light"
+                  name="md-pause-circle-outline"
+                />
               </Pressable>
             )}
             {playbackStatus === 'paused' && (
               <Pressable onPress={resumeAudio}>
-                <AntDesign name="playcircleo" style={styles.icons} />
+                <AntDesign
+                  name="playcircleo"
+                  size={72}
+                  color="#B862B0"
+                  fontWeight="light"
+                />
               </Pressable>
             )}
           </View>

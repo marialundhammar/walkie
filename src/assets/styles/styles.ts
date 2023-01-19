@@ -39,6 +39,14 @@ export default StyleSheet.create({
     justifyContent: 'center',
   },
 
+  contentColumn: {
+    flex: 1,
+    flexDirection: 'column',
+    color: 'white',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+
   finishedContainer: {
     backgroundColor: '#83F8A4',
     height: 120,
@@ -73,6 +81,7 @@ export default StyleSheet.create({
     borderWidth: 1,
     borderColor: '#B862B0',
     color: '#B862B0',
+    margin: 8,
   },
 
   buttonFake: {
@@ -116,13 +125,13 @@ export default StyleSheet.create({
 
   modalView: {
     width: 300,
+    height: 360,
     backgroundColor: '#111621',
     borderRadius: 10,
     padding: 35,
     alignItems: 'center',
     elevation: 5,
     borderColor: '#B862B0',
-    //borderWidth: 0.3,
   },
 
   modalText: {
@@ -194,6 +203,7 @@ export default StyleSheet.create({
 
   storyButtonContainer: {
     flex: 1,
+    flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -204,6 +214,7 @@ export default StyleSheet.create({
     letterSpacing: 0.25,
     margin: 16,
     marginTop: 8,
+    marginBottom: 8,
   },
 
   image: {

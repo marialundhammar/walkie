@@ -6,9 +6,11 @@ import { UserLocationContext } from '../context/userLocationContext';
 import ModalComponent from '../components/Modal';
 import styles from '../assets/styles/styles';
 import FakeButtons from '../components/FakeButtons';
+import Finished from '../components/Finished';
 
 const MapView = ({ navigation }) => {
-  const { setShowModal, storyFinished } = useContext(UserLocationContext);
+  const { setShowModal, storyFinished, showFinishedModal } =
+    useContext(UserLocationContext);
   const [showFakeButtons, setShowFakeButtons] = useState<Boolean>(false);
 
   useEffect(() => {
@@ -32,6 +34,8 @@ const MapView = ({ navigation }) => {
       </Pressable>
 
       <ModalComponent />
+
+      {showFinishedModal && <Finished />}
 
       {showFakeButtons && <FakeButtons />}
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Pressable, SafeAreaView, Text, Image, View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import styles from '../assets/styles/styles';
@@ -35,16 +35,13 @@ const StoriesView = ({ navigation }) => {
             Mordet i terrariet är en historia i fem delar som utspelar i
             Folketspark. Du kommer få följa med på en ca 1,5 kilometer lång
             vandring genom konstiga sammanträffanden och hemligheter. Se till
-            att din mobil är fulladdad och att du har med dig bra hörlurar. Ta
-            dig till startplatsen och följ sedan instruktionerna i mobilen och i
-            hörlurarna.
+            att din mobil är fulladdad och att du har med dig bra hörlurar.
           </Text>
           <Text style={styles.storyBodyText}>
             Ta dig till startplatsen och följ sedan instruktionerna i mobilen
             och i hörlurarna.
           </Text>
         </View>
-
         <View style={styles.storyButtonContainer}>
           <Pressable
             style={styles.button}
