@@ -1,12 +1,21 @@
-import React, { FC, PropsWithChildren, useEffect, useRef } from 'react';
+import React, {
+  FC,
+  PropsWithChildren,
+  useEffect,
+  useContext,
+  useRef,
+} from 'react';
 import { SafeAreaView, Text, Pressable, Animated, View } from 'react-native';
 import type { ViewStyle } from 'react-native';
 import { SvgXml } from 'react-native-svg';
 import styles from '../assets/styles/styles';
+import { UserLocationContext } from '../context/userLocationContext';
 
 type FadeInViewProps = PropsWithChildren<{ style: ViewStyle }>;
 
 export default function HomeView({ navigation }) {
+  const { setNavigateToHome } = useContext(UserLocationContext);
+
   const svgMarkup = `<svg width="234" height="99" viewBox="0 0 234 99" fill="none" xmlns="http://www.w3.org/2000/svg">
   <path d="M25.4391 46.5C23 52.5 23.9389 64.5 15.9389 62.5C5.93888 60 12.9479 50.5 18.4389 54.5C23.9299 58.5 34.9389 61 28.9389 68.5C22.9389 76 -1.56111 64.5 2.43889 83C4.27222 87.1667 10.0389 95.3 18.4389 94.5C26.8389 93.7 38.4391 62 40.9391 63.5" stroke="#A35EA4" stroke-width="3"/>
   <path d="M34.9391 37C34.9391 40.0589 34.1098 42.7603 32.8479 44.6532C31.5789 46.5566 29.9907 47.5 28.4391 47.5C26.8875 47.5 25.2992 46.5566 24.0303 44.6532C22.7684 42.7603 21.9391 40.0589 21.9391 37C21.9391 33.9411 22.7684 31.2397 24.0303 29.3468C25.2992 27.4434 26.8875 26.5 28.4391 26.5C29.9907 26.5 31.5789 27.4434 32.8479 29.3468C34.1098 31.2397 34.9391 33.9411 34.9391 37Z" stroke="#A35EA4" stroke-width="3"/>
@@ -27,6 +36,10 @@ export default function HomeView({ navigation }) {
         useNativeDriver: true,
       }).start();
     }, [fadeAnim]);
+
+    useEffect(() => {
+      setNavigateToHome(false);
+    });
 
     return (
       <Animated.View

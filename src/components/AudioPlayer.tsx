@@ -21,11 +21,10 @@ const AudioPlayer: FC = (navigation) => {
     setShowAudioPlayer,
     updateMarker,
     setShowFinishedModal,
+    showFinishedModal,
   } = useContext(UserLocationContext);
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [sound, setSound] = useState<any>(null);
-  const [duration, setDuration] = useState(0);
-  const [position, setPosition] = useState(0);
 
   const nextMarkerArrayLat: number[] = [
     55.59547471790409, 55.59267028199996, 55.59126244128724, 55.59312389421599,
@@ -44,19 +43,14 @@ const AudioPlayer: FC = (navigation) => {
 
   const playSound = async (track) => {
     let status = await sound.getStatusAsync();
+    console.log(track);
 
     if (status.isLoaded !== true) {
       try {
         await sound.loadAsync(track);
-        setDuration(status.durationMillis);
         await sound.playAsync();
         setPlaybackStatus('playing');
         setIsPlaying(true);
-        let interval = setInterval(() => {
-          sound.getStatusAsync().then((status) => {
-            setPosition(status.positionMillis);
-          });
-        }, 1000);
       } catch (error) {
         console.log(error);
       }
@@ -120,12 +114,13 @@ const AudioPlayer: FC = (navigation) => {
     }
     if (nextTrack === 5) {
       playSound(soundLibrary.track5);
-      console.log(duration);
     }
   };
 
   const goNextTrack = async () => {
+    console.log('hi from next track');
     nextTrack++;
+    console.log(nextTrack);
     setIsPlaying(false);
     await sound.unloadAsync();
     setShowAudioPlayer(false);
@@ -137,8 +132,15 @@ const AudioPlayer: FC = (navigation) => {
     i++;
     if (nextTrack === 6) {
       setShowFinishedModal(true);
+      nextTrack = 1;
+      i = 0;
     }
   };
+
+  useEffect(() => {
+    if (showFinishedModal) {
+    }
+  }, [showFinishedModal]);
 
   if (showAudioPlayer) {
     if (!isPlaying) {

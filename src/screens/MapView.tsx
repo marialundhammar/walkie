@@ -9,7 +9,7 @@ import FakeButtons from '../components/FakeButtons';
 import Finished from '../components/Finished';
 
 const MapView = ({ navigation }) => {
-  const { setShowModal, storyFinished, showFinishedModal } =
+  const { setShowModal, storyFinished, showFinishedModal, navigateToHome } =
     useContext(UserLocationContext);
   const [showFakeButtons, setShowFakeButtons] = useState<Boolean>(false);
 
@@ -21,8 +21,10 @@ const MapView = ({ navigation }) => {
     if (storyFinished) {
       navigation.navigate('EndingView');
     }
-    console.log(storyFinished);
-  }, [navigation, storyFinished]);
+    if (navigateToHome) {
+      navigation.navigate('HomeView');
+    }
+  }, [navigation, storyFinished, navigateToHome]);
 
   return (
     <SafeAreaView style={styles.containerMap}>

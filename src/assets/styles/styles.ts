@@ -1,6 +1,7 @@
 import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
+  //Map
   map: {
     width: '100%',
     height: '100%',
@@ -8,10 +9,16 @@ export default StyleSheet.create({
     flex: 1,
   },
 
-  titleStyle: {
+  //Fonts
+  h3: {
+    fontSize: 46,
     color: 'white',
-    marginBottom: 50,
+    letterSpacing: 0.25,
+    fontWeight: 'bold',
+    margin: 16,
   },
+
+  //Containers
 
   containerRow: {
     flexDirection: 'row',
@@ -20,14 +27,6 @@ export default StyleSheet.create({
     zIndex: 100,
     margin: 16,
     marginBottom: 8,
-  },
-
-  h3: {
-    fontSize: 46,
-    color: 'white',
-    letterSpacing: 0.25,
-    fontWeight: 'bold',
-    margin: 16,
   },
 
   containerColumn: {
@@ -64,7 +63,7 @@ export default StyleSheet.create({
   },
 
   button: {
-    borderRadius: 10,
+    borderRadius: 14,
     backgroundColor: '#B862B0',
     justifyContent: 'center',
     alignItems: 'center',
@@ -99,7 +98,7 @@ export default StyleSheet.create({
 
   textButton: {
     color: 'black',
-    fontSize: 16,
+    fontSize: 18,
     letterSpacing: 0.25,
     fontWeight: 'bold',
     justifyContent: 'center',
@@ -177,12 +176,14 @@ export default StyleSheet.create({
 
   storyContainer: {
     flex: 1,
+    alignContain: 'center',
     backgroundColor: 'rgb(30,30,30)',
   },
 
   storyContent: {
     flex: 1,
     alignItems: 'flex-start',
+    alignContain: 'center',
   },
 
   h2: {

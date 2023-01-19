@@ -9,7 +9,8 @@ const Map = () => {
   let location: any;
   let i: number = 0;
   const [errorMsg, setErrorMsg] = useState<string>('');
-  const [updateUserLocationDelay, setUpdateUserLocationDelay] = useState<any>();
+  const [updateUserLocationDelay, setUpdateUserLocationDelay] =
+    useState<number>();
   const {
     updateUserLocation,
     userLocation,
@@ -86,3 +87,6 @@ const Map = () => {
 };
 
 export default Map;
+function componentWillUnmount() {
+  throw new Error('Function not implemented.');
+}

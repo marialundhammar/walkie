@@ -4,12 +4,23 @@ import styles from '../assets/styles/styles';
 import { UserLocationContext } from '../context/userLocationContext';
 
 const Finished = () => {
-  const { showFinishedModal, setShowFinishedModal, setStoryFinished } =
-    useContext(UserLocationContext);
+  const {
+    showFinishedModal,
+    setShowFinishedModal,
+    setStoryFinished,
+    setNavigateToHome,
+    updateMarker,
+  } = useContext(UserLocationContext);
 
   const listenToExtra = () => {
     setStoryFinished(true);
     setShowFinishedModal(false);
+  };
+
+  const closeModal = () => {
+    setShowFinishedModal(false);
+    setNavigateToHome(true);
+    updateMarker(55.59422981350562, 13.01321370453578, 'Start Position');
   };
 
   return (
@@ -19,7 +30,7 @@ const Finished = () => {
           <Text style={styles.h3}>SLUT!</Text>
           <Pressable
             style={[styles.button, styles.button]}
-            onPress={() => setShowFinishedModal(false)}
+            onPress={closeModal}
           >
             <Text style={styles.textButton}>Close</Text>
           </Pressable>

@@ -5,7 +5,7 @@ import { Audio } from 'expo-av';
 import styles from '../assets/styles/styles';
 
 const ModalComponent = () => {
-  const { showModal, setShowModal, distance, locationLoaded } =
+  const { showModal, setShowModal, distance, locationLoaded, updateMarker } =
     useContext(UserLocationContext);
 
   const distanceOneDec = Math.round(distance * 10) / 10;
