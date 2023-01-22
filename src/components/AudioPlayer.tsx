@@ -11,16 +11,17 @@ import { Feather } from '@expo/vector-icons';
 let nextTrack: number = 1;
 let i: number = 0;
 
-const AudioPlayer: FC = (navigation) => {
+const AudioPlayer: FC = () => {
   const {
     showAudioPlayer,
     setShowAudioPlayer,
     updateMarker,
     setShowFinishedModal,
     showFinishedModal,
+    nextMarkerTitle,
   } = useContext(UserLocationContext);
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
-  const [sound, setSound] = useState<any>(null);
+  const [sound, setSound] = useState(null);
 
   const nextMarkerArrayLat: number[] = [
     55.59547471790409, 55.59267028199996, 55.59126244128724, 55.59312389421599,
@@ -140,7 +141,7 @@ const AudioPlayer: FC = (navigation) => {
   if (showAudioPlayer) {
     if (!isPlaying) {
       return (
-        <View style={styles.containerAudio}>
+        <View style={styles.containerAudioPlay}>
           <Animatable.View animation="bounce" duration={2000}>
             <Pressable
               style={styles.button}
@@ -156,39 +157,43 @@ const AudioPlayer: FC = (navigation) => {
 
     if (isPlaying) {
       return (
-        <View style={styles.containerAudio}>
-          <Pressable style={styles.buttonBorder} onPress={replayAudio}>
-            <MaterialIcons name="replay" size={24} color="#B862B0" />
-            <Text style={styles.textButtonBorder}>Replay</Text>
-          </Pressable>
+        <View>
+          <Text style={styles.trackText}>Spelas nu: {nextMarkerTitle}</Text>
 
-          <View>
-            {playbackStatus === 'playing' && (
-              <Pressable onPress={pauseAudio}>
-                <Ionicons
-                  size={72}
-                  color="#B862B0"
-                  fontWeight="light"
-                  name="md-pause-circle-outline"
-                />
-              </Pressable>
-            )}
-            {playbackStatus === 'paused' && (
-              <Pressable onPress={resumeAudio}>
-                <AntDesign
-                  name="playcircleo"
-                  size={72}
-                  color="#B862B0"
-                  fontWeight="light"
-                />
-              </Pressable>
-            )}
+          <View style={styles.containerAudio}>
+            <Pressable style={styles.buttonBorder} onPress={replayAudio}>
+              <MaterialIcons name="replay" size={24} color="#B862B0" />
+              <Text style={styles.textButtonBorder}>Replay</Text>
+            </Pressable>
+
+            <View>
+              {playbackStatus === 'playing' && (
+                <Pressable onPress={pauseAudio}>
+                  <Ionicons
+                    size={72}
+                    color="#B862B0"
+                    fontWeight="light"
+                    name="md-pause-circle-outline"
+                  />
+                </Pressable>
+              )}
+              {playbackStatus === 'paused' && (
+                <Pressable onPress={resumeAudio}>
+                  <AntDesign
+                    name="playcircleo"
+                    size={60}
+                    color="#B862B0"
+                    fontWeight="light"
+                  />
+                </Pressable>
+              )}
+            </View>
+
+            <Pressable style={styles.buttonBorder} onPress={goNextTrack}>
+              <Feather name="arrow-right" size={24} color="#B862B0" />
+              <Text style={styles.textButtonBorder}>Next</Text>
+            </Pressable>
           </View>
-
-          <Pressable style={styles.buttonBorder} onPress={goNextTrack}>
-            <Feather name="arrow-right" size={24} color="#B862B0" />
-            <Text style={styles.textButtonBorder}>Next</Text>
-          </Pressable>
         </View>
       );
     }

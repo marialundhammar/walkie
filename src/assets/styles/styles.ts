@@ -111,6 +111,17 @@ export default StyleSheet.create({
     margin: 8,
     backgroundColor: '#111621',
   },
+  fakeButtonsPressed: {
+    borderRadius: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingHorizontal: 4,
+    paddingVertical: 8,
+    borderWidth: 1,
+    borderColor: '#B862B0',
+    margin: 8,
+    backgroundColor: '#B862B0',
+  },
 
   //Button Texts
   textButton: {
@@ -125,6 +136,15 @@ export default StyleSheet.create({
 
   textButtonBorder: {
     color: '#B862B0',
+    fontSize: 12,
+    letterSpacing: 0.25,
+    fontWeight: 'bold',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 4,
+  },
+  textButtonIsPressed: {
+    color: '#111621',
     fontSize: 12,
     letterSpacing: 0.25,
     fontWeight: 'bold',
@@ -157,6 +177,15 @@ export default StyleSheet.create({
     textAlign: 'center',
   },
 
+  trackText: {
+    color: '#B862B0',
+    margin: 8,
+    fontSize: 16,
+
+    letterSpacing: 0.25,
+    fontWeight: 'bold',
+  },
+
   fakeButtonText: {
     color: '#B862B0',
     marginBottom: 15,
@@ -187,8 +216,17 @@ export default StyleSheet.create({
     backgroundColor: '#111621',
     color: 'white',
     alignItems: 'center',
+    justifyContent: 'space-between',
+    height: 100,
+  },
+
+  containerAudioPlay: {
+    flexDirection: 'row',
+    backgroundColor: '#111621',
+    color: 'white',
+    alignItems: 'center',
     justifyContent: 'center',
-    height: 160,
+    height: 130,
   },
 
   buttonMap: {

@@ -13,7 +13,7 @@ const EndingView = ({ navigation }) => {
     updateMarker,
   } = useContext(UserLocationContext);
 
-  let player: any = new Audio.Sound();
+  let player = new Audio.Sound();
 
   const endGame = () => {
     navigation.navigate('HomeView');
