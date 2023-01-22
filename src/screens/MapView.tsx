@@ -3,10 +3,12 @@ import Map from '../components/Map';
 import AudioPlayer from '../components/AudioPlayer';
 import React, { useContext, useEffect, useState } from 'react';
 import { UserLocationContext } from '../context/userLocationContext';
-import ModalComponent from '../components/Modal';
+import Modal from '../components/Modal';
 import styles from '../assets/styles/styles';
 import FakeButtons from '../components/FakeButtons';
 import Finished from '../components/Finished';
+import DistanceBanner from '../components/DistanceBaner';
+import PlayingIntro from '../components/PlayingIntro';
 
 const MapView = ({ navigation }) => {
   const {
@@ -16,6 +18,8 @@ const MapView = ({ navigation }) => {
     navigateToHome,
     setShowFakeButtons,
     showFakeButtons,
+    locationLoaded,
+    isPlayingIntro,
   } = useContext(UserLocationContext);
 
   useEffect(() => {
@@ -37,12 +41,13 @@ const MapView = ({ navigation }) => {
 
   return (
     <SafeAreaView style={styles.containerMap}>
+      {locationLoaded && <DistanceBanner />}
       <Pressable style={styles.buttonFake} onPress={fakeButtonMode}>
         <Text style={styles.textButton}>🥸</Text>
       </Pressable>
 
-      <ModalComponent />
-
+      <Modal />
+      {isPlayingIntro && <PlayingIntro />}
       {showFinishedModal && <Finished />}
 
       {showFakeButtons && <FakeButtons />}

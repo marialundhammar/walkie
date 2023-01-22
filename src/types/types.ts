@@ -19,6 +19,7 @@ export type LocationContextType = {
   showFinishedModal: boolean;
   navigateToHome: boolean;
   showFakeButtons: boolean;
+  isPlayingIntro: boolean;
   setStoryFinished: (boolean) => void;
   setShowAudioPlayer: (boolean) => void;
   updateMarker: (lat: number, long: number, title: string) => void;
@@ -27,4 +28,5 @@ export type LocationContextType = {
   setShowFinishedModal: (boolean) => void;
   setNavigateToHome: (boolean) => void;
   setShowFakeButtons: (boolean) => void;
+  setIsPlayingIntro: (boolean) => void;
 };

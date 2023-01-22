@@ -1,12 +1,17 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Modal, Text, View, Pressable, ActivityIndicator } from 'react-native';
 import { UserLocationContext } from '../context/userLocationContext';
 import { Audio } from 'expo-av';
 import styles from '../assets/styles/styles';
 
 const ModalComponent = () => {
-  const { showModal, setShowModal, distance, locationLoaded, updateMarker } =
-    useContext(UserLocationContext);
+  const {
+    showModal,
+    setShowModal,
+    distance,
+    locationLoaded,
+    setIsPlayingIntro,
+  } = useContext(UserLocationContext);
 
   const distanceOneDec = Math.round(distance * 10) / 10;
 
@@ -14,12 +19,21 @@ const ModalComponent = () => {
     setShowModal(!showModal);
 
     let player: any = new Audio.Sound();
+    const status = await player.getStatusAsync();
 
     await player.loadAsync(require('../assets/tracks/instruction.mp3'), {
       shouldPlay: true,
     });
     await player.setPositionAsync(0);
     await player.playAsync();
+
+    setIsPlayingIntro(true);
+
+    player.setOnPlaybackStatusUpdate((status) => {
+      if (status.didJustFinish) {
+        setIsPlayingIntro(false);
+      }
+    });
   };
 
   if (!locationLoaded) {

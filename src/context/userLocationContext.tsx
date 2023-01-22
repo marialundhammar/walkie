@@ -45,6 +45,7 @@ const UserLocationProvider = ({ children }) => {
     useState<string>('Start Position');
   userLocationArrayLat = [55.59338, 55.59265, 55.5942];
   userLocationArrayLong = [13.01635, 13.01743, 13.01213];
+  const [isPlayingIntro, setIsPlayingIntro] = useState<boolean>(false);
 
   const updateUserLocation = async (lat: any, long: any) => {
     setUserLocation({
@@ -104,8 +105,10 @@ const UserLocationProvider = ({ children }) => {
         storyFinished,
         showFinishedModal,
         navigateToHome,
+        isPlayingIntro,
         setShowFinishedModal,
         setNavigateToHome,
+        setIsPlayingIntro,
       }}
     >
       {children}
