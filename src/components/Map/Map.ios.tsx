@@ -1,9 +1,9 @@
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
 import React, { useState, useEffect, useContext } from 'react';
 import * as Location from 'expo-location';
-import { UserLocationContext } from '../context/userLocationContext';
-import mapStyle from '../assets/styles/mapStyle';
-import styles from '../assets/styles/styles';
+import { UserLocationContext } from '../../context/userLocationContext';
+import mapStyle from '../../assets/styles/mapStyle';
+import styles from '../../assets/styles/styles';
 
 const Map = () => {
   let location: any;
