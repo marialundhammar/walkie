@@ -7,17 +7,23 @@
     "userInterfaceStyle": "light",
     "splash": {
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#000000"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
     },
+    "backgroundColor": "#000000",
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.maryh4ara.walkie",
       "config": {
         "googleMapsApiKey": "AIzaSyCSK6QOId2THG5jZY_UZlhRO4bGjY2YE5A"
+      }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "a6d6129c-5110-4fad-b3b5-58add546ef7a"
       }
     }
   },
