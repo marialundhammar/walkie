@@ -1,7 +1,7 @@
 import { Audio } from 'expo-av';
 import styles from '../assets/styles/styles';
 import React, { FC, useContext, useEffect, useState } from 'react';
-import { View, Pressable, Text, Button } from 'react-native';
+import { View, Pressable, Text } from 'react-native';
 import { UserLocationContext } from '../context/userLocationContext';
 import soundLibrary from './SoundLibrary';
 import { AntDesign, Ionicons, MaterialIcons } from '@expo/vector-icons';
@@ -10,10 +10,6 @@ import { Feather } from '@expo/vector-icons';
 
 let nextTrack: number = 1;
 let i: number = 0;
-
-function delay(time) {
-  return new Promise((resolve) => setTimeout(resolve, time));
-}
 
 const AudioPlayer: FC = (navigation) => {
   const {
@@ -43,7 +39,6 @@ const AudioPlayer: FC = (navigation) => {
 
   const playSound = async (track) => {
     let status = await sound.getStatusAsync();
-    console.log(track);
 
     if (status.isLoaded !== true) {
       try {

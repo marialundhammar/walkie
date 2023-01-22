@@ -36,6 +36,7 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+
   finishedContainer: {
     backgroundColor: '#83F8A4',
     height: 120,
@@ -45,12 +46,11 @@ export default StyleSheet.create({
 
   fakeButtonContainer: {
     position: 'absolute',
-    right: 50,
-    marginTop: 95,
+    right: 5,
+    marginTop: 110,
     backgroundColor: '#111621',
-    padding: 16,
     borderRadius: 10,
-    width: 300,
+    width: 150,
     borderColor: '#B862B0',
     borderWidth: 3,
   },
@@ -103,12 +103,13 @@ export default StyleSheet.create({
     borderRadius: 10,
     justifyContent: 'center',
     alignItems: 'center',
-    paddingHorizontal: 34,
+    paddingHorizontal: 4,
     paddingVertical: 8,
     borderWidth: 1,
     borderColor: '#B862B0',
     color: '#B862B0',
     margin: 8,
+    backgroundColor: '#111621',
   },
 
   //Button Texts
@@ -124,7 +125,7 @@ export default StyleSheet.create({
 
   textButtonBorder: {
     color: '#B862B0',
-    fontSize: 16,
+    fontSize: 12,
     letterSpacing: 0.25,
     fontWeight: 'bold',
     justifyContent: 'center',
@@ -152,6 +153,12 @@ export default StyleSheet.create({
 
   modalText: {
     color: 'white',
+    marginBottom: 15,
+    textAlign: 'center',
+  },
+
+  fakeButtonText: {
+    color: '#B862B0',
     marginBottom: 15,
     textAlign: 'center',
   },

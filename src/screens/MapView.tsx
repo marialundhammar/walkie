@@ -31,12 +31,13 @@ const MapView = ({ navigation }) => {
     }
   }, [navigation, storyFinished, navigateToHome]);
 
+  const fakeButtonMode = () => {
+    setShowFakeButtons(!showFakeButtons);
+  };
+
   return (
     <SafeAreaView style={styles.containerMap}>
-      <Pressable
-        style={styles.buttonFake}
-        onPress={() => setShowFakeButtons(!showFakeButtons)}
-      >
+      <Pressable style={styles.buttonFake} onPress={fakeButtonMode}>
         <Text style={styles.textButton}>🥸</Text>
       </Pressable>
 

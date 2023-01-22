@@ -59,9 +59,9 @@ const UserLocationProvider = ({ children }) => {
     return new Promise((resolve) => setTimeout(resolve, time));
   }
 
-  const [nextMarkerLat, setNextMarkerLat] = useState<number>(55.59422981350562);
+  const [nextMarkerLat, setNextMarkerLat] = useState<number>(55.59435538950568);
   const [nextMarkerLong, setNextMarkerLong] =
-    useState<number>(13.01321370453578);
+    useState<number>(13.013241100411376);
   const [nextMarkerTitle, setNextMarkerTitle] =
     useState<string>('Start Position');
   userLocationArrayLat = [55.59338, 55.59265, 55.5942];

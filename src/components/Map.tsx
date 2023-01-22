@@ -8,6 +8,7 @@ import styles from '../assets/styles/styles';
 const Map = () => {
   let location: any;
   let i: number = 0;
+
   const [errorMsg, setErrorMsg] = useState<string>('');
   const [updateUserLocationDelay, setUpdateUserLocationDelay] =
     useState<number>();
@@ -18,17 +19,13 @@ const Map = () => {
     nextMarkerLong,
     nextMarkerTitle,
     setLocationLoaded,
+    showFakeButtons,
+    showAudioPlayer,
   } = useContext(UserLocationContext);
 
   function delay(time) {
     return new Promise((resolve) => setTimeout(resolve, time));
   }
-
-  const delayOfUserPosition = async () => {
-    await delay(1000);
-    setUpdateUserLocationDelay(i);
-    i++;
-  };
 
   useEffect(() => {
     (async () => {
@@ -39,11 +36,17 @@ const Map = () => {
       }
 
       location = await Location.getCurrentPositionAsync({});
+
       setLocationLoaded(true);
-      updateUserLocation(location.coords.latitude, location.coords.longitude);
-      delayOfUserPosition();
+
+      console.log(showFakeButtons, userLocation);
+
+      if (!showFakeButtons && !showAudioPlayer) {
+        await delay(1000);
+        updateUserLocation(location.coords.latitude, location.coords.longitude);
+      }
     })();
-  }, []);
+  }, [userLocation]);
 
   let pinColor = '#B862B0';
 
@@ -62,15 +65,17 @@ const Map = () => {
         showsUserLocation={true}
         showsCompass={true}
       >
-        {/*    <Marker
-          style={{ width: 60, height: 40 }}
-          coordinate={{
-            latitude: userLocation.lat,
-            longitude: userLocation.long,
-          }}
-          pinColor="blue"
-          title="You are here"
-        ></Marker> */}
+        {showFakeButtons && (
+          <Marker
+            style={{ width: 60, height: 40 }}
+            coordinate={{
+              latitude: userLocation.lat,
+              longitude: userLocation.long,
+            }}
+            pinColor="blue"
+            title="You are here"
+          ></Marker>
+        )}
 
         <Marker
           style={{ width: 60, height: 40 }}
