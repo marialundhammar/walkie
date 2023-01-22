@@ -89,7 +89,7 @@ export default StyleSheet.create({
   buttonFake: {
     position: 'absolute',
     right: 10,
-    top: 60,
+    top: 70,
     width: 50,
     height: 50,
     borderRadius: 25,

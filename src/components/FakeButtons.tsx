@@ -11,31 +11,26 @@ const FakeButtons = () => {
   const fakeUserLocation1 = () => {
     updateUserLocation(55.59435538950568, 13.013241100411376);
     handlePress(1);
-    //setShowFakeButtons(false);
   };
 
   const fakeUserLocation2 = () => {
     updateUserLocation(55.59551758186783, 13.013496581119055);
     handlePress(2);
-    //setShowFakeButtons(false);
   };
 
   const fakeUserLocation3 = () => {
     updateUserLocation(55.59267028199996, 13.01421795796289);
     handlePress(3);
-    //setShowFakeButtons(false);
   };
 
   const fakeUserLocation4 = () => {
     updateUserLocation(55.59123156110095, 13.016593774734927);
     handlePress(4);
-    //setShowFakeButtons(false);
   };
 
   const fakeUserLocation5 = () => {
     updateUserLocation(55.59312389421599, 13.019219154211706);
     handlePress(5);
-    //setShowFakeButtons(false);
   };
 
   const handlePress = (id) => {

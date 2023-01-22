@@ -11,14 +11,9 @@ const DistanceBanner = () => {
 
   return (
     <View>
-      <Animatable.Text
-        animation="pulse"
-        easing="ease-out"
-        iterationCount="infinite"
-        style={styles.storyText}
-      >
+      <Text style={styles.storyText}>
         Distans till nästa: ca {distanceOneDec} meter
-      </Animatable.Text>
+      </Text>
     </View>
   );
 };

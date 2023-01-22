@@ -34,8 +34,8 @@ const StoriesView = ({ navigation }) => {
           <Text style={styles.storyBodyText}>
             Mordet i terrariet är en historia i fem delar som utspelar i
             Folketspark. Du kommer få följa med på en ca 1,5 kilometer lång
-            vandring genom konstiga sammanträffanden och hemligheter. Se till
-            att din mobil är fulladdad och att du har med dig bra hörlurar.
+            ljudvandring genom konstiga sammanträffanden och hemligheter. Se
+            till att din mobil är fulladdad och att du har med dig bra hörlurar.
           </Text>
           <Text style={styles.storyBodyText}>
             Ta dig till startplatsen och följ sedan instruktionerna i mobilen

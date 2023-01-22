@@ -1,7 +1,7 @@
 import { SafeAreaView, Text, Pressable } from 'react-native';
 import Map from '../components/Map';
 import AudioPlayer from '../components/AudioPlayer';
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { UserLocationContext } from '../context/userLocationContext';
 import Modal from '../components/Modal';
 import styles from '../assets/styles/styles';

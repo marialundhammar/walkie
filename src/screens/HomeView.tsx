@@ -70,7 +70,7 @@ export default function HomeView({ navigation }) {
           style={styles.button}
           onPress={() => navigation.navigate('StoriesView')}
         >
-          <Text style={styles.textButton}>Let's start</Text>
+          <Text style={styles.textButton}>Starta</Text>
         </Pressable>
       </View>
     </SafeAreaView>
