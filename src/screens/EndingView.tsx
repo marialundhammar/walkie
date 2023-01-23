@@ -5,6 +5,7 @@ import { UserLocationContext } from '../context/userLocationContext';
 import { Audio } from 'expo-av';
 import * as Animatable from 'react-native-animatable';
 
+let sound = new Audio.Sound();
 const EndingView = ({ navigation }) => {
   const {
     setStoryFinished,
@@ -15,7 +16,6 @@ const EndingView = ({ navigation }) => {
   } = useContext(UserLocationContext);
 
   const [isCalling, setIsCalling] = useState(false);
-  let sound = new Audio.Sound();
 
   const endGame = async () => {
     navigation.navigate('HomeView');
@@ -66,7 +66,7 @@ const EndingView = ({ navigation }) => {
           <Text style={styles.textButton}>Lyssna</Text>
         </Pressable>
 
-        <Pressable style={styles.button} onPress={() => endGame}>
+        <Pressable style={styles.button} onPress={endGame}>
           <Text style={styles.textButton}>Avsluta ljudvandringen</Text>
         </Pressable>
       </View>

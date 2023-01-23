@@ -148,7 +148,7 @@ const AudioPlayer: FC = () => {
               disabled={isPlaying}
               onPress={handlePlaySound}
             >
-              <Text style={styles.textButton}>Play Sound</Text>
+              <Text style={styles.textButton}>Spela Ljud</Text>
             </Pressable>
           </Animatable.View>
         </View>

@@ -66,13 +66,13 @@ const ModalComponent = () => {
               style={[styles.button, styles.button]}
               onPress={() => closeModalEvents()}
             >
-              <Text style={styles.textButton}>Start instruction</Text>
+              <Text style={styles.textButton}>Starta Intro</Text>
             </Pressable>
             <Pressable
               style={[styles.button, styles.button]}
               onPress={() => setShowModal(false)}
             >
-              <Text style={styles.textButton}>Close</Text>
+              <Text style={styles.textButton}>Skippa Intro</Text>
             </Pressable>
           </View>
         </View>

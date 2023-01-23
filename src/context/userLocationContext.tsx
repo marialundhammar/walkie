@@ -26,13 +26,13 @@ const calculateDistance = (
 
 const UserLocationProvider = ({ children }) => {
   const [userLocation, setUserLocation] = useState({ lat: 0, long: 0 });
-  const [locationLoaded, setLocationLoaded] = useState<boolean>(false);
-  const [showAudioPlayer, setShowAudioPlayer] = useState<boolean>(false);
-  const [showModal, setShowModal] = useState<boolean>(false);
-  const [storyFinished, setStoryFinished] = useState<boolean>(false);
-  const [showFinishedModal, setShowFinishedModal] = useState<boolean>(false);
-  const [navigateToHome, setNavigateToHome] = useState<boolean>(false);
-  const [showFakeButtons, setShowFakeButtons] = useState<boolean>(false);
+  const [locationLoaded, setLocationLoaded] = useState(false);
+  const [showAudioPlayer, setShowAudioPlayer] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [storyFinished, setStoryFinished] = useState(false);
+  const [showFinishedModal, setShowFinishedModal] = useState(false);
+  const [navigateToHome, setNavigateToHome] = useState(false);
+  const [showFakeButtons, setShowFakeButtons] = useState(false);
 
   function delay(time) {
     return new Promise((resolve) => setTimeout(resolve, time));
