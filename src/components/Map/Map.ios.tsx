@@ -39,8 +39,6 @@ const Map = () => {
 
       setLocationLoaded(true);
 
-      console.log(showFakeButtons, userLocation);
-
       if (!showFakeButtons && !showAudioPlayer) {
         await delay(1000);
         updateUserLocation(location.coords.latitude, location.coords.longitude);

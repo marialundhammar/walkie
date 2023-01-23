@@ -95,7 +95,6 @@ const AudioPlayer: FC = () => {
   };
 
   const handlePlaySound = async () => {
-    console.log('playing');
     if (nextTrack === 1) {
       playSound(soundLibrary.track1);
     }
@@ -115,7 +114,6 @@ const AudioPlayer: FC = () => {
 
   const goNextTrack = async () => {
     nextTrack++;
-    console.log(nextTrack);
 
     await sound.unloadAsync();
     setShowAudioPlayer(false);
