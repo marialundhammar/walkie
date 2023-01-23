@@ -7,6 +7,7 @@ export default StyleSheet.create({
     height: '100%',
     zIndex: -1,
     flex: 1,
+    fontFamily: 'Futura',
   },
 
   //Fonts
@@ -47,7 +48,7 @@ export default StyleSheet.create({
   fakeButtonContainer: {
     position: 'absolute',
     right: 5,
-    marginTop: 110,
+    top: 160,
     backgroundColor: '#111621',
     borderRadius: 10,
     width: 150,
@@ -61,6 +62,14 @@ export default StyleSheet.create({
     color: 'white',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+
+  introModal: {
+    flex: 0.2,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 10,
+    backgroundColor: '#111621',
   },
 
   //Buttons
@@ -89,7 +98,7 @@ export default StyleSheet.create({
   buttonFake: {
     position: 'absolute',
     right: 10,
-    top: 70,
+    top: 100,
     width: 50,
     height: 50,
     borderRadius: 25,
@@ -264,6 +273,15 @@ export default StyleSheet.create({
     marginLeft: 16,
   },
 
+  distanceText: {
+    color: 'white',
+    fontSize: 24,
+    letterSpacing: 0.25,
+    margin: 4,
+    fontStyle: 'bold',
+    fontFamily: 'Futura',
+  },
+
   storyButtonContainer: {
     flex: 1,
     flexDirection: 'column',
@@ -271,9 +289,16 @@ export default StyleSheet.create({
     justifyContent: 'center',
   },
 
+  endingBodyText: {
+    color: 'white',
+    fontSize: 16,
+    letterSpacing: 0.25,
+    margin: 16,
+  },
+
   storyBodyText: {
     color: 'white',
-    fontSize: 14,
+    fontSize: 16,
     letterSpacing: 0.25,
     margin: 16,
     marginTop: 8,

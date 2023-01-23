@@ -1,9 +1,9 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { SafeAreaView, Text, Image, View, Pressable } from 'react-native';
 import styles from '../assets/styles/styles';
 import { UserLocationContext } from '../context/userLocationContext';
 import { Audio } from 'expo-av';
-import { Ionicons } from '@expo/vector-icons';
+import * as Animatable from 'react-native-animatable';
 
 const EndingView = ({ navigation }) => {
   const {
@@ -14,6 +14,7 @@ const EndingView = ({ navigation }) => {
     updateMarker,
   } = useContext(UserLocationContext);
 
+  const [isCalling, setIsCalling] = useState(false);
   let player = new Audio.Sound();
 
   const endGame = () => {
@@ -30,6 +31,7 @@ const EndingView = ({ navigation }) => {
     });
     await player.setPositionAsync(0);
     await player.playAsync();
+    setIsCalling(true);
   };
 
   return (
@@ -38,12 +40,25 @@ const EndingView = ({ navigation }) => {
 
       <Image style={styles.image} source={require('../assets/prisonImg.jpg')} />
       <View style={styles.storyContent}>
-        <Text style={styles.storyBodyText}>
-          Efter att vi spelat in dokumentären hörde den nu dömde mördaren av sig
-          och ville ge sin berättelse. Vi åkte till Kumlafängelset där han
-          redogjorde för oss vad han ansåg hade hänt.
+        <Text style={styles.endingBodyText}>
+          För att försöka förstå hur man kan göra något sådant som den
+          misstänkte mannen kunde göra bestämde vi oss för att slå honom en
+          signal. Han hade då suttit ett år på Kumla, Sveriges högriskfängelse
         </Text>
       </View>
+
+      {isCalling && (
+        <View style={styles.centeredView}>
+          <Animatable.Text
+            animation="pulse"
+            easing="ease-out"
+            iterationCount="infinite"
+            style={styles.storyText}
+          >
+            Ringer upp den dömde mannen ...
+          </Animatable.Text>
+        </View>
+      )}
 
       <View style={styles.storyButtonContainer}>
         <Pressable style={styles.button} onPress={playExtra}>
@@ -51,7 +66,7 @@ const EndingView = ({ navigation }) => {
         </Pressable>
 
         <Pressable style={styles.button} onPress={endGame}>
-          <Text style={styles.textButton}>Avsluta</Text>
+          <Text style={styles.textButton}>Avsluta ljudvandringen</Text>
         </Pressable>
       </View>
     </SafeAreaView>

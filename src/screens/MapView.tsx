@@ -6,7 +6,7 @@ import { UserLocationContext } from '../context/userLocationContext';
 import Modal from '../components/StartModal';
 import styles from '../assets/styles/styles';
 import FakeButtons from '../components/FakeButtons';
-import Finished from '../components/Finished';
+import FinishModal from '../components/FinishModal';
 import DistanceBanner from '../components/DistanceBaner';
 import PlayingIntro from '../components/PlayingIntro';
 
@@ -48,7 +48,7 @@ const MapView = ({ navigation }) => {
 
       <Modal />
       {isPlayingIntro && <PlayingIntro />}
-      {showFinishedModal && <Finished />}
+      {showFinishedModal && <FinishModal />}
 
       {showFakeButtons && <FakeButtons />}
 

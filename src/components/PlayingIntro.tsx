@@ -5,23 +5,21 @@ import { UserLocationContext } from '../context/userLocationContext';
 import * as Animatable from 'react-native-animatable';
 
 const PlayingIntroModal = () => {
-  const { setIsPlayingIntro } = useContext(UserLocationContext);
-
   return (
-    <Modal animationType="slide" transparent={true}>
-      <View style={styles.centeredView}>
-        <Animatable.Text
-          animation="pulse"
-          easing="ease-out"
-          iterationCount="infinite"
-          style={styles.storyText}
-        >
-          Spelar introduktion..
-        </Animatable.Text>
+    <View style={styles.introModal}>
+      <Animatable.Text
+        animation="pulse"
+        easing="ease-out"
+        iterationCount="infinite"
+        style={styles.storyText}
+      >
+        Spelar introduktion..
+      </Animatable.Text>
 
-        <Text style={styles.modalText}></Text>
-      </View>
-    </Modal>
+      <Text style={styles.modalText}>
+        Om du inte hör något - se till att Tyst Läge är avstängt
+      </Text>
+    </View>
   );
 };
 

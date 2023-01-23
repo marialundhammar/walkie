@@ -19,6 +19,7 @@ const AudioPlayer: FC = () => {
     setShowFinishedModal,
     showFinishedModal,
     nextMarkerTitle,
+    setLocationLoaded,
   } = useContext(UserLocationContext);
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [sound, setSound] = useState(null);
@@ -128,6 +129,7 @@ const AudioPlayer: FC = () => {
       setShowFinishedModal(true);
       nextTrack = 1;
       i = 0;
+      setLocationLoaded(false);
     }
   };
 
@@ -161,7 +163,7 @@ const AudioPlayer: FC = () => {
           <View style={styles.containerAudio}>
             <Pressable style={styles.buttonBorder} onPress={replayAudio}>
               <MaterialIcons name="replay" size={24} color="#B862B0" />
-              <Text style={styles.textButtonBorder}>Replay</Text>
+              <Text style={styles.textButtonBorder}>Repris</Text>
             </Pressable>
 
             <View>
@@ -189,7 +191,7 @@ const AudioPlayer: FC = () => {
 
             <Pressable style={styles.buttonBorder} onPress={goNextTrack}>
               <Feather name="arrow-right" size={24} color="#B862B0" />
-              <Text style={styles.textButtonBorder}>Next</Text>
+              <Text style={styles.textButtonBorder}>Nästa</Text>
             </Pressable>
           </View>
         </View>
