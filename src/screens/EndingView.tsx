@@ -15,22 +15,23 @@ const EndingView = ({ navigation }) => {
   } = useContext(UserLocationContext);
 
   const [isCalling, setIsCalling] = useState(false);
-  let player = new Audio.Sound();
+  let sound = new Audio.Sound();
 
-  const endGame = () => {
+  const endGame = async () => {
     navigation.navigate('HomeView');
     setStoryFinished(false);
     setShowFinishedModal(false);
     updateMarker(55.59422981350562, 13.01321370453578, 'Start Position');
-    player.unloadAsync();
+
+    await sound.unloadAsync();
   };
 
   const playExtra = async () => {
-    await player.loadAsync(require('../assets/tracks/extramaterial.mp3'), {
+    await sound.loadAsync(require('../assets/tracks/extramaterial.mp3'), {
       shouldPlay: true,
     });
-    await player.setPositionAsync(0);
-    await player.playAsync();
+    await sound.setPositionAsync(0);
+    await sound.playAsync();
     setIsCalling(true);
   };
 
@@ -65,7 +66,7 @@ const EndingView = ({ navigation }) => {
           <Text style={styles.textButton}>Lyssna</Text>
         </Pressable>
 
-        <Pressable style={styles.button} onPress={endGame}>
+        <Pressable style={styles.button} onPress={() => endGame}>
           <Text style={styles.textButton}>Avsluta ljudvandringen</Text>
         </Pressable>
       </View>
