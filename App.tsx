@@ -10,11 +10,6 @@ import { Animated } from 'react-native';
 
 const Stack = createNativeStackNavigator<MyStackParamList>();
 
-const fadeIn = {
-  type: 'fade',
-  duration: 500,
-};
-
 export default function App() {
   return (
     <UserLocationProvider>

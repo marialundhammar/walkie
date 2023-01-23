@@ -12,7 +12,7 @@ const DistanceBanner = () => {
   return (
     <View>
       <Text style={styles.storyText}>
-        Distans till nästa: ca {distanceOneDec} meter
+        Distans till nästa kartmål: ca {distanceOneDec} meter
       </Text>
     </View>
   );

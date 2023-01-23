@@ -1,9 +1,10 @@
-import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
+import MapView, { PROVIDER_GOOGLE } from 'react-native-web-maps';
 import React, { useState, useEffect, useContext } from 'react';
 import * as Location from 'expo-location';
-import { UserLocationContext } from '../context/userLocationContext';
-import mapStyle from '../assets/styles/mapStyle';
-import styles from '../assets/styles/styles';
+import { UserLocationContext } from '../../context/userLocationContext';
+import mapStyle from '../../assets/styles/mapStyle';
+import styles from '../../assets/styles/styles';
+import API_KEY from 'expo-constants';
 
 const Map = () => {
   let location: any;
@@ -39,8 +40,6 @@ const Map = () => {
 
       setLocationLoaded(true);
 
-      console.log(showFakeButtons, userLocation);
-
       if (!showFakeButtons && !showAudioPlayer) {
         await delay(1000);
         updateUserLocation(location.coords.latitude, location.coords.longitude);
@@ -49,13 +48,28 @@ const Map = () => {
   }, [userLocation]);
 
   let pinColor = '#B862B0';
+  const createMarker = (color) => {
+    const canvas = document.createElement('canvas');
+    canvas.width = 40;
+    canvas.height = 40;
+    const ctx = canvas.getContext('2d');
+    ctx.beginPath();
+    ctx.arc(20, 20, 10, 0, 2 * Math.PI);
+    ctx.fillStyle = color;
+    ctx.fill();
+    return canvas.toDataURL();
+  };
+
+  const nextMarkerStyle = createMarker('#B862B0');
+  const userMarkerStyle = createMarker('#03b6fc');
 
   return (
     <>
-      <MapView.Animated
+      <MapView
         provider={PROVIDER_GOOGLE}
+        apiKey={API_KEY}
         style={styles.map}
-        customMapStyle={mapStyle}
+        options={{ styles: mapStyle, disableDefaultUI: true }}
         initialRegion={{
           latitude: nextMarkerLat,
           longitude: nextMarkerLong,
@@ -65,33 +79,29 @@ const Map = () => {
         showsUserLocation={true}
         showsCompass={true}
       >
-        {showFakeButtons && (
-          <Marker
-            style={{ width: 60, height: 40 }}
-            coordinate={{
-              latitude: userLocation.lat,
-              longitude: userLocation.long,
-            }}
-            pinColor="blue"
-            title="You are here"
-          ></Marker>
-        )}
-
-        <Marker
+        <MapView.Marker
+          icon={nextMarkerStyle}
           style={{ width: 60, height: 40 }}
           coordinate={{
             latitude: nextMarkerLat,
             longitude: nextMarkerLong,
           }}
-          pinColor="#B862B0"
           title={nextMarkerTitle}
-        ></Marker>
-      </MapView.Animated>
+        ></MapView.Marker>
+
+        <MapView.Marker
+          icon={userMarkerStyle}
+          style={{ width: 60, height: 40 }}
+          coordinate={{
+            latitude: userLocation.lat,
+            longitude: userLocation.long,
+          }}
+          title={nextMarkerTitle}
+          animation={1}
+        ></MapView.Marker>
+      </MapView>
     </>
   );
 };
 
 export default Map;
-function componentWillUnmount() {
-  throw new Error('Function not implemented.');
-}

@@ -1,5 +1,5 @@
 import { SafeAreaView, Text, Pressable } from 'react-native';
-import Map from '../components/Map';
+import Map from '../components/Map/Map';
 import AudioPlayer from '../components/AudioPlayer';
 import React, { useContext, useEffect } from 'react';
 import { UserLocationContext } from '../context/userLocationContext';

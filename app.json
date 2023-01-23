@@ -5,6 +5,7 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "userInterfaceStyle": "light",
+    "entryPoint": "./index.js",
     "splash": {
       "resizeMode": "contain",
       "backgroundColor": "#000000"
@@ -34,7 +35,10 @@
     }
   },
   "web": {
-    "favicon": "./assets/favicon.png"
+    "favicon": "./assets/favicon.png",
+    "config": {
+      "googleMapsApiKey": "AIzaSyCSK6QOId2THG5jZY_UZlhRO4bGjY2YE5A"
+    }
   },
   "extra": {
     "eas": {
