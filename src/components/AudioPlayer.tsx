@@ -122,7 +122,7 @@ const AudioPlayer: FC = () => {
     updateMarker(
       nextMarkerArrayLat[i],
       nextMarkerArrayLong[i],
-      `Track ${nextTrack}`
+      `Del ${nextTrack}`
     );
     i++;
     if (nextTrack === 6) {

@@ -41,8 +41,7 @@ const UserLocationProvider = ({ children }) => {
   const [nextMarkerLat, setNextMarkerLat] = useState<number>(55.59435538950568);
   const [nextMarkerLong, setNextMarkerLong] =
     useState<number>(13.013241100411376);
-  const [nextMarkerTitle, setNextMarkerTitle] =
-    useState<string>('Start Position');
+  const [nextMarkerTitle, setNextMarkerTitle] = useState<string>('Del 1');
   userLocationArrayLat = [55.59338, 55.59265, 55.5942];
   userLocationArrayLong = [13.01635, 13.01743, 13.01213];
   const [isPlayingIntro, setIsPlayingIntro] = useState<boolean>(false);

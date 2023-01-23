@@ -298,7 +298,7 @@ export default StyleSheet.create({
 
   storyBodyText: {
     color: 'white',
-    fontSize: 16,
+    fontSize: 14,
     letterSpacing: 0.25,
     margin: 16,
     marginTop: 8,

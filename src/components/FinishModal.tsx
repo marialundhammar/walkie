@@ -46,7 +46,7 @@ const Finished = () => {
             style={[styles.button, styles.button]}
             onPress={closeModal}
           >
-            <Text style={styles.textButton}>Close</Text>
+            <Text style={styles.textButton}>Stäng</Text>
           </Pressable>
         </View>
       </View>
