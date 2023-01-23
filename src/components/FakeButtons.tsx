@@ -50,7 +50,7 @@ const FakeButtons = () => {
               : styles.textButtonBorder
           }
         >
-          User Location 1
+          Position 1
         </Text>
       </Pressable>
       <Pressable
@@ -64,7 +64,7 @@ const FakeButtons = () => {
               : styles.textButtonBorder
           }
         >
-          User Location 2
+          Position 2
         </Text>
       </Pressable>
       <Pressable
@@ -78,7 +78,7 @@ const FakeButtons = () => {
               : styles.textButtonBorder
           }
         >
-          User Location 3
+          Position 3
         </Text>
       </Pressable>
       <Pressable
@@ -92,7 +92,7 @@ const FakeButtons = () => {
               : styles.textButtonBorder
           }
         >
-          User Location 4
+          Position 4
         </Text>
       </Pressable>
       <Pressable
@@ -106,7 +106,7 @@ const FakeButtons = () => {
               : styles.textButtonBorder
           }
         >
-          User Location 5
+          Position 5
         </Text>
       </Pressable>
       {/*     <Text style={styles.fakeButtonText}>

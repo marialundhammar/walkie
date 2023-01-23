@@ -3,6 +3,7 @@ import { SafeAreaView, Text, Image, View, Pressable } from 'react-native';
 import styles from '../assets/styles/styles';
 import { UserLocationContext } from '../context/userLocationContext';
 import { Audio } from 'expo-av';
+import { Ionicons } from '@expo/vector-icons';
 
 const EndingView = ({ navigation }) => {
   const {
@@ -24,7 +25,7 @@ const EndingView = ({ navigation }) => {
   };
 
   const playExtra = async () => {
-    await player.loadAsync(require('../assets/tracks/instruction.mp3'), {
+    await player.loadAsync(require('../assets/tracks/extramaterial.mp3'), {
       shouldPlay: true,
     });
     await player.setPositionAsync(0);
@@ -43,6 +44,7 @@ const EndingView = ({ navigation }) => {
           redogjorde för oss vad han ansåg hade hänt.
         </Text>
       </View>
+
       <View style={styles.storyButtonContainer}>
         <Pressable style={styles.button} onPress={playExtra}>
           <Text style={styles.textButton}>Lyssna</Text>

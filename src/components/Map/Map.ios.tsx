@@ -46,8 +46,6 @@ const Map = () => {
     })();
   }, [userLocation]);
 
-  let pinColor = '#B862B0';
-
   return (
     <>
       <MapView.Animated

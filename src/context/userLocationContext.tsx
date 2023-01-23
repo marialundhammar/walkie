@@ -64,6 +64,7 @@ const UserLocationProvider = ({ children }) => {
   let sound: any = new Audio.Sound();
   const playAlertSound = async () => {
     await sound.loadAsync(require('../assets/tracks/alert.mp3'));
+    await sound.setVolumeAsync(0.2);
     await sound.setPositionAsync(0);
     await sound.playAsync();
   };

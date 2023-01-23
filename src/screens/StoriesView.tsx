@@ -47,7 +47,7 @@ const StoriesView = ({ navigation }) => {
             style={styles.button}
             onPress={() => navigation.navigate('MapView')}
           >
-            <Text style={styles.textButton}>Start</Text>
+            <Text style={styles.textButton}>Starta ljudvandringen</Text>
           </Pressable>
         </View>
       </LinearGradient>

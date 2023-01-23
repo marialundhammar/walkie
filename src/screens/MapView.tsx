@@ -3,7 +3,7 @@ import Map from '../components/Map/Map';
 import AudioPlayer from '../components/AudioPlayer';
 import React, { useContext, useEffect } from 'react';
 import { UserLocationContext } from '../context/userLocationContext';
-import Modal from '../components/Modal';
+import Modal from '../components/StartModal';
 import styles from '../assets/styles/styles';
 import FakeButtons from '../components/FakeButtons';
 import Finished from '../components/Finished';
